@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Introducción</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Gustavo A. García   ggarci24@eafit.edu.co                  " />
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <link href="libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Introducción
+]
+.author[
+### Gustavo A. García <br> <span class="notbold" style="font-size:65%"><a href="mailto:ggarci24@eafit.edu.co" class="email">ggarci24@eafit.edu.co</a></span> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+]
+.date[
+### <span class="notbold" style="font-size:65%">Econometría espacial<br>PhD/Maestría en Economía<br>Universidad EAFIT</span>
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.notbold{
+    font-weight:normal
+}
+
+body {
+text-align: justify;
+}
+
+h1{
+      margin-top: -1px;
+      margin-bottom: -3px;
+}
+
+.small-code pre{
+  margin-bottom: -10px;
+  
+}  
+
+.medium-code pre{
+  margin-bottom: 2px;
+  
+}
+
+div.block { 
+background-color: #E1E1FF;
+padding: 10px;
+border: 1px solid white;
+margin-left: 25px;
+border-radius: 15px;
+text-align: center;
+}
+
+&lt;/style&gt;
+
+
+
+
+
+
+&lt;font size = "5"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+Link slides en formato [html](https://gusgarciacruz.github.io/EconometriaEspacial/Introduccion/Introduccion.html)
+
+Link slides en formato [PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Introduccion/Introduccion.pdf)
+
+---
+# &lt;span style="font-size:80%"&gt;En este tema&lt;/span&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Motivación](#motivacion)&lt;/span&gt; &lt;br&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;La Nueva Geografía Económica](#NGE)&lt;/span&gt; &lt;br&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;¿Por qué estudiar la economía espacial?](#ecoespacial)&lt;/span&gt; &lt;br&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;El porqué de la econometría espacial](#econespacial)&lt;/span&gt; &lt;br&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Softwares más utilizados en el análisis de datos espaciales](#softwares)&lt;/span&gt; &lt;br&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Fuentes de información de datos espaciales](#data)&lt;/span&gt;
+
+---
+# &lt;span style="font-size:80%"&gt;Lecturas&lt;/span&gt;
+- &lt;span style="font-size:130%"&gt;Elhorst, J. P. (2024). "Raising the Bar in Spatial Economic Analysis: Two Laws of Spatial Economic Modelling". *Spatial Economic Analysis*, 19(2):115–132.&lt;/span&gt;
+
+- &lt;span style="font-size:130%"&gt;Florax, R. y van der Vlist (2003). "Spatial Econometrics Data Analysis: Moving Beyond Traditional Models". *International Regional Science Review*, 26(3):223-243&lt;/span&gt;
+
+- &lt;span style="font-size:130%"&gt;Fujita, M., Krugman, P., y Venables, A. (1999). *The Spatial Economy: Cities, Regions and International Trade*. MIT Press, Cambridge MA. &lt;span style="color:red"&gt;Pág. 1-10&lt;/span&gt;
+
+- &lt;span style="font-size:130%"&gt;Fujita, M. y Krugman, P. (2004). "The New Economic Geography: Past,
+Present and Future". *Papers in Regional Science*, 83(1):139-164. &lt;span style="color:red"&gt;Pág. 139-144&lt;/span&gt;
+
+- &lt;span style="font-size:130%"&gt;[&lt;span style="color:blue"&gt;Glaeser, E. (2008). Honoring Paul Krugman. *The New York Times*](http://economix.blogs.nytimes.com/2008/10/13/honoring-paul-krugman/?_r=0}) 
+
+- &lt;span style="font-size:130%"&gt;Moreno, R. y Vayá, E. (2002). "Econometría Espacial: Nuevas Técnicas para el Análisis Regional. Una Aplicación a las Regiones Europeas". *Investigaciones Regionales*, 1:83-106&lt;/span&gt;
+
+- &lt;span style="font-size:130%"&gt;Paelinck, J. (2013). "Spatial Econometrics: A Personal Overview". Studia
+Ekonomiczne, 152:106-118&lt;/span&gt;
+
+---
+name: motivacion
+# &lt;span style="font-size:80%"&gt;Motivación&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Antes de la década de los ochenta la corriente dominante de la economía no le prestaba atención a la dimensión del espacio en el análisis económico &lt;span style="color:blue"&gt; `\(\Longrightarrow\)` una economía incorpórea, sin ciudades ni regiones
+
+- La introducción de la dimensión espacial en la teoría económica convencional supone modificaciones rigurosas a los resultados tradicionales del análisis competitivo, &lt;span style="color:blue"&gt;sobre todo en referencia a su influencia sobre la organización industrial local y su capacidad de potenciar el crecimiento
+
+- La idea es que las  &lt;span style="color:blue"&gt;decisiones de localización&lt;/span&gt; de las firmas generan una &lt;span style="color:blue"&gt;distribución espacial&lt;/span&gt; de las actividades económicas:  &lt;span style="color:blue"&gt;concentradas en algunos puntos o dispersas por todo un territorio
+
+- La teoría de la organización industrial y del crecimiento económico `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;principios de la competencia perfecta y los rendimientos constantes a escala
+
+- &lt;span style="color:blue"&gt;El espacio actúa como un fallo de mercado&lt;/span&gt; `\(\Longrightarrow\)` por lo que el supuesto de competencia perfecta es un supuesto muy restrictivo 
+
+---
+name: NGE
+# &lt;span style="font-size:80%"&gt;La Nueva Geografía Económica (NGE)&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- La NGE - Krugman, Fujita, Venables y otros: intenta explicar la formación de una variedad de aglomeraciones (o concentraciones) en el espacio geográfico
+
+- Para que la teoría de la localización tenga sentido, es necesario alejarse del enfoque de rendimientos constantes a escala y mercados competitivos 
+
+	`\(\Longrightarrow\)` &lt;span style="color:blue"&gt;la introducción del espacio limita la competencia&lt;/span&gt; 
+	
+	`\(\Longrightarrow\)` &lt;span style="color:blue"&gt;la propia localización se constituye como una barrera a la entrada&lt;/span&gt;
+	
+	`\(\Longrightarrow\)` &lt;span style="color:blue"&gt;la localización proporciona un cierto poder de mercado a las empresas ahí ubicadas
+
+&lt;p style="margin-top: 2em"&gt;
+	
+&lt;div class = "block"&gt;
+&lt;span style="color:blue"&gt;Los rendimientos crecientes son fundamentales para explicar la concentración territorial de la producción
+&lt;/div&gt;
+
+---
+# &lt;span style="font-size:80%"&gt;La Nueva Geografía Económica (NGE)&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Con rendimientos no crecientes
+
+ `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;cada empresa distribuye sus actividades entre todas las áreas de consumo posible
+ 
+ `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;el nivel de producción será el que satisface la demanda local
+ 
+ `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;los costes de transporte no existen
+ 
+ `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;cada mercado será una autarquía
+ 
+ `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;FKV: "backyard capitalism": cada hogar o pequeño grupo produce la mayoría de los productos que consume
+
+---
+# &lt;span style="font-size:80%"&gt;La Nueva Geografía Económica (NGE)&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Las ciudades son el ejemplo más claro de la existencia de &lt;span style="color:blue"&gt;externalidades&lt;/span&gt; en la economía real
+
+- La concentración espacial provee a las empresas de una serie de beneficios que generan un tipo especial de economías externas `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;las economías de aglomeración
+
+- **Aglomeración**: la concentración de la actividad económica, originada y sostenida por una especie de lógica circular
+	
+&lt;div class = "block"&gt;
+&lt;span style="font-size:110%; font-weight: bold; color:blue"&gt; Lógica circular de la concentración de la actividad&lt;/span&gt;
+
+&lt;span style="text-align: justify; display:block; color:blue"&gt;Los clientes potenciales de una determinada actividad van donde se encuentra concentrada esta actividad porque allí esperan encontrar una variedad de establecimientos en donde ver y hojear los productos; y las tiendas están en ese lugar porque saben que es el sitio idóneo de clientes potenciales
+&lt;/div&gt;
+	
+- **Economías de aglomeración**: todas aquellas externalidades o ventajas que se derivan de una estructura espacial concentrada 
+
+---
+# &lt;span style="font-size:80%"&gt;La Nueva Geografía Económica (NGE)&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- La concentración espacial de las actividades económicas se justifica mediante &lt;span style="color:blue"&gt;la existencia de economías externas de aglomeración que reducen los costes de producción dentro de unos determinados límites territoriales&lt;/span&gt;
+
+- Este proceso genera, asimismo, una dinámica industrial capaz de atraer actividades complementarias y generar servicios especializados, así como fomentar la innovación tecnológica
+
+- Componentes esenciales de la NGE para explicar la tendencia a la concentración de las actividades económicas en el espacio:
+&lt;p style="margin-top: -0.5em"&gt;
+  - &lt;span style="color:blue"&gt;''El amor por la variedad''&lt;/span&gt;: la aglomeración o la clusterización de la actividad económica ocurre a muchos niveles geográficos, teniendo una variedad de composiciones
+  - &lt;span style="color:blue"&gt;Las economías de escala&lt;/span&gt;: sin éstas la producción tendría lugar de forma perfectamente dispersa, en proximidad de la localización de cada individuo
+  - &lt;span style="color:blue"&gt;Los costos de transporte&lt;/span&gt;: representan una metáfora de todos los elementos de fricción espacial `\(\Longrightarrow\)` aquellos elementos que hacen privilegiada y más apetecida una localización concentrada respecto a una dispersa
+  - &lt;span style="color:blue"&gt;El tamaño de los mercados internos&lt;/span&gt;: factores de demanda 
+
+---
+name: ecoespacial
+# &lt;span style="font-size:80%"&gt;¿Por qué estudiar la economía espacial?&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- &lt;span style="color:blue"&gt;Todos los fenómenos económicos toman lugar en el espacio geográfico&lt;/span&gt;: 
+&lt;p style="margin-top: -0.5em"&gt;
+  - todos los productos son comerciados en diferentes localizaciones
+	- para alcanzar la apropiada localización los productos deben ser transportados y entregados a través del espacio
+	- las actividades de servicios toman lugar en particulares localizaciones
+	- el conocimiento y la información requerida para llevar a cabo la actividad debe ser transmitida o adquirida a travás del espacio geográfico  
+
+- Las razones de porqué los mercados son localizados en un particular lugar son de importancia económica y la naturaleza y comportamiento de los mercados depende de su localización: &lt;span style="color:blue"&gt;el desempeño de los mercados dependen parcialmente de la geografía&lt;/span&gt;
+
+- El desempeño económico de un área depende de la naturaleza y desempeño de diferentes mercados localizados en un área
+
+&lt;div class = "block"&gt;
+&lt;span style="color:blue"&gt;Geografía y economía son temas usualmente interrelacionados&lt;/span&gt;
+&lt;/div&gt;
+
+---
+# &lt;span style="font-size:80%"&gt;¿Por qué estudiar la economía espacial?&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Antes de los 90, las cuestiones espaciales fueron ignoradas por economistas y *policy-makers*:
+&lt;p style="margin-top: -0.5em"&gt;
+  - todo el sistema económico es asumido a tomar lugar en una ''cabeza de alfiler''
+	- por muchos años la mayoría de temas sobre geografía económica fueron asumidas por las &lt;span style="color:blue"&gt;teorías de Ricardo de ventajas comparativas y comercio internacional
+
+- Desde los 90 ha habido un incremento en el interés por temas de economía espacial:
+&lt;p style="margin-top: -0.5em"&gt;
+  - trabajos sobre temas urbanos y regionales llevados a cabo por el Banco Mundial, la OECD, la Comisión Europea y las Naciones Unidas
+  - cambio en el pensamiento de los países sobre el importante rol jugado por las ciudades y las regiones
+  - los aportes analíticos de autores como &lt;span style="color:blue"&gt;Paul Krugman&lt;/span&gt; (Nobel de Economía en 2008) y &lt;span style="color:blue"&gt;Michael Porter&lt;/span&gt; 
+  
+---
+# &lt;span style="font-size:80%"&gt;¿Por qué estudiar la economía espacial?&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+El análisis de la economía espacial ha sido dividida en dos sub-campos: economía urbana y economía regional
+
+&lt;span style="color:blue"&gt;Economía urbana&lt;/span&gt;
+&lt;p style="margin-top: -1em"&gt;
+- se preocupa por cuestiones sobre la naturaleza y cómo funcionan la economía de la ciudad
+- su límite es la ciudad
+- tiende a enfatizar sobre temas o relaciones operando principalmente en un lugar
+- la pregunta central tiende a ignorar las áreas y se centra en analizar el funcionamiento de una ciudad individual
+
+&lt;p style="margin-top: -0.5em"&gt;
+
+&lt;span style="color:blue"&gt;Economía regional&lt;/span&gt;
+&lt;p style="margin-top: -1em"&gt;
+- se encuentra más relacionada con temas sobre áreas espaciales más grandes que una ciudad
+- tiende a enfatizar sobre temas o relaciones operando principalmente entre entre lugares
+- la pregunta central es sobre las razones de porqué partes individuales de un mismo país o grupos de países se comportan diferente uno del otro
+
+&lt;p style="margin-top: -0.5em"&gt;
+
+Existen muchos temas que pueden ser analizados desde la economía urbana y regional: la localización de las ciudades y firmas, la migración laboral...
+
+---
+name: econespacial
+# &lt;span style="font-size:80%"&gt;El porqué de la econometría espacial&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Cuando se trabajan con datos de corte transversal suelen aparecer los denominados &lt;span style="color:blue"&gt;efectos espaciales&lt;/span&gt;: la &lt;span style="color:blue"&gt;heterogeneidad&lt;/span&gt; y la &lt;span style="color:blue"&gt;dependencia espacial&lt;/span&gt;
+
+- &lt;span style="color:blue"&gt;Heterogeneidad espacial&lt;/span&gt;: este efecto aparece cuando se utilizan datos de unidades espaciales muy distintas para explicar un mismo fenómeno `\(\Longrightarrow\)` aparecen problemas como la &lt;span style="color:blue"&gt;heteroscedasticidad&lt;/span&gt; o la &lt;span style="color:blue"&gt;inestabilidad estructural&lt;/span&gt;
+
+- &lt;span style="color:blue"&gt;Dependencia espacial&lt;/span&gt;: o autocorrelación espacial, surge siempre que el valor de una variable en un lugar del espacio está relacionado con su valor en otro u otros lugares del espacio
+
+- Mientras la heterogeneidad espacial puede ser tratada por técnicas estándar de econometría, la dependencia espacial no. Esto se debe a la &lt;span style="color:blue"&gt;multidireccionalidad que domina las relaciones de interdependencia entre unidades espaciales&lt;/span&gt;
+
+- La econometría espacial, como subdisciplina de la econometría, surge como respuesta para resolver la presencia de efectos espaciales
+
+---
+# &lt;span style="font-size:80%"&gt;El porqué de la econometría espacial&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+El término econometría espacial fue introducido por Jean Paelinck en los 70. En el libro *Spatial Econometrics*, Paelinck y Klaassen resaltan cinco características en el análisis espacial que deben ser consideradas:
+
+- el rol de la interdependencia espacial en los modelos espaciales
+
+- las asimetrías en las relaciones espaciales
+
+- la importancia de factores explicatorios localizados en otros espacios
+
+- diferenciación entre interacciones *ex post* y *ex ante*
+
+- modelación explicita del espacio
+
+---
+# &lt;span style="font-size:80%"&gt;El porqué de la econometría espacial&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+Causas de la dependencia espacial:
+&lt;p style="margin-top: -1em"&gt;
+- la delimitación arbitraria de las unidades espaciales de observación (ejemplo, zonas censales, limites municipales, departamentales...)
+- problemas de agregación espacial
+- la presencia de externalidades y efectos de desbordamiento
+
+Causa de la heterogeneidad espacial:
+&lt;p style="margin-top: -1em"&gt;
+- falta de estabilidad en el espacio del comportamiento de la variable u otras relaciones bajo estudio
+- esto implica que la forma funcional y los parámetros varían con la localización y no son homogóneos en los datos
+- puede ocurrir al estimar modelos econométricos con datos de sección cruzada de unidades espaciales diferentes, como regiones ricas y pobres
+
+La heterogeneidad espacial se puede tratar con la econometría estándar que tenga en cuenta la inestabilidad estructural, mientras que la dependencia espacial implica tener en cuenta dicha dependencia en el modelo de regresión (problema de variables omitidas)
+
+---
+name: softwares
+# &lt;span style="font-size:80%"&gt;Softwares más utilizados en el análisis de datos espaciales&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- [R](http://ndl.ethernet.edu.et/bitstream/123456789/44390/1/243.pdf)
+- [Matlab](https://www.mathworks.com/academia/books/introduction-to-spatial-econometrics-lesage.html)
+- [Python](https://pysal.org/)
+- [GeoDa](https://spatial.uchicago.edu/geoda)
+- [QGis](https://docs.qgis.org/3.40/en/docs/gentle_gis_introduction/index.html)
+- [ArcGis](https://spatialstats-analysis-1.hub.arcgis.com/)
+- [Stata](https://link.springer.com/book/10.1007/978-3-031-57182-4)
+
+---
+name: data
+# &lt;span style="font-size:80%"&gt;Fuentes de información de datos espaciales&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- [IGAC](https://www.igac.gov.co/datos-abiertos/datos-abiertos-geoespaciales)
+- [DANE](https://geoportal.dane.gov.co/#gsc.tab=0)
+- [IDESC-Cali](https://www.cali.gov.co/planeacion/publicaciones/3560/idesc/)
+- [Geomedellin](https://www.medellin.gov.co/geomedellin/)
+-	[IDECA-Bogotá](https://www.ideca.gov.co/)
+- [GeoDa](https://geodacenter.github.io/data-and-lab/)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
