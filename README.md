@@ -7,5 +7,5 @@ Profesor: [Gustavo A. García](https://gusgarciacruz.github.io/cv)
 **Temas**<br>
 [Una breve introducción a R](https://gusgarciacruz.github.io/EbookR_introduccion/)
 
-[Introducción](https://gusgarciacruz.github.io/EconometriaEspacial/Introducción/Introducción.html)
+[Introducción](https://gusgarciacruz.github.io/EconometriaEspacial/Introduccion/Introduccion.html)
 
