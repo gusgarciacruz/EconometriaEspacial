@@ -1,0 +1,358 @@
+---
+title: "Introducción"
+author: Gustavo A. García <br> <span style="font-size:65%" class='notbold'>ggarci24@eafit.edu.co</span> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+date: <span style="font-size:65%" class='notbold'>Econometría espacial<br>PhD/Maestría en Economía<br>Universidad EAFIT</span>
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    css: xaringan-themer.css
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+      ratio: "16:9"
+---
+
+```{r setup, include = F}
+# This is the recommended set up for flipbooks
+# you might think about setting cache to TRUE as you gain practice --- building flipbooks from scratch can be time consuming
+options(width = 70)
+knitr::opts_chunk$set(
+  dev.args = list(bg = 'transparent'),
+  fig.width = 12, message = TRUE,
+  warning = FALSE, comment = "", cache = TRUE, fig.retina = 3
+)
+knitr::opts_knit$set(global.par = TRUE)
+Sys.setenv(`_R_S3_METHOD_REGISTRATION_NOTE_OVERWRITES_` = "false")
+# remotes::install_github("luukvdmeer/sfnetworks")
+# remotes::install_github("EvaMaeRey/flipbookr")
+# remotes::install_github("rlesur/klippy")
+# devtools::install_github("gadenbuie/xaringanExtra")
+library(flipbookr)
+library(xaringanthemer)
+library(tidyverse)
+library(klippy)
+library(xaringanExtra)
+library(gt); library(knitr); library(kableExtra); library(tibble)
+library(summarytools)
+```
+
+<style>
+.notbold{
+    font-weight:normal
+}
+
+body {
+text-align: justify;
+}
+
+h1{
+      margin-top: -1px;
+      margin-bottom: -3px;
+}
+
+.small-code pre{
+  margin-bottom: -10px;
+  
+}  
+
+.medium-code pre{
+  margin-bottom: 2px;
+  
+}
+
+div.block { 
+background-color: #E1E1FF;
+padding: 10px;
+border: 1px solid white;
+margin-left: 25px;
+border-radius: 15px;
+text-align: center;
+}
+
+</style>
+
+```{r xaringan-scribble, echo=FALSE}
+xaringanExtra::use_scribble()
+```
+
+```{r xaringanExtra-clipboard, echo=FALSE}
+htmltools::tagList(
+  xaringanExtra::use_clipboard(
+    button_text = "<i class=\"fa fa-clipboard\"></i>",
+    success_text = "<i class=\"fa fa-check\" style=\"color: #90BE6D\"></i>",
+    error_text = "<i class=\"fa fa-times-circle\" style=\"color: #F94144\"></i>"
+  ),
+  rmarkdown::html_dependency_font_awesome()
+)
+```
+
+```{r xaringan-extra-styles, echo=FALSE}
+xaringanExtra::use_extra_styles(
+  hover_code_line = TRUE,         #<<
+  mute_unhighlighted_code = TRUE  #<<
+)
+```
+<font size = "5">
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
+Link slides en formato [html](https://gusgarciacruz.github.io/EconometriaEspacial/Introduccion/Introduccion.html)
+
+Link slides en formato [PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Introduccion/Introduccion.pdf)
+
+---
+# <span style="font-size:80%">En este tema</span>
+
+- <span style="font-size:150%">[<span style="color:black">Motivación](#motivacion)</span> <br> <br>
+
+- <span style="font-size:150%">[<span style="color:black">La Nueva Geografía Económica](#NGE)</span> <br> <br>
+
+- <span style="font-size:150%">[<span style="color:black">¿Por qué estudiar la economía espacial?](#ecoespacial)</span> <br> <br>
+
+- <span style="font-size:150%">[<span style="color:black">El porqué de la econometría espacial](#econespacial)</span> <br> <br>
+
+- <span style="font-size:150%">[<span style="color:black">Softwares más utilizados en el análisis de datos espaciales](#softwares)</span> <br> <br>
+
+- <span style="font-size:150%">[<span style="color:black">Fuentes de información de datos espaciales](#data)</span>
+
+---
+# <span style="font-size:80%">Lecturas</span>
+- <span style="font-size:130%">Elhorst, J. P. (2024). "Raising the Bar in Spatial Economic Analysis: Two Laws of Spatial Economic Modelling". *Spatial Economic Analysis*, 19(2):115–132.</span>
+
+- <span style="font-size:130%">Florax, R. y van der Vlist (2003). "Spatial Econometrics Data Analysis: Moving Beyond Traditional Models". *International Regional Science Review*, 26(3):223-243</span>
+
+- <span style="font-size:130%">Fujita, M., Krugman, P., y Venables, A. (1999). *The Spatial Economy: Cities, Regions and International Trade*. MIT Press, Cambridge MA. <span style="color:red">Pág. 1-10</span>
+
+- <span style="font-size:130%">Fujita, M. y Krugman, P. (2004). "The New Economic Geography: Past,
+Present and Future". *Papers in Regional Science*, 83(1):139-164. <span style="color:red">Pág. 139-144</span>
+
+- <span style="font-size:130%">[<span style="color:blue">Glaeser, E. (2008). Honoring Paul Krugman. *The New York Times*](http://economix.blogs.nytimes.com/2008/10/13/honoring-paul-krugman/?_r=0}) 
+
+- <span style="font-size:130%">Moreno, R. y Vayá, E. (2002). "Econometría Espacial: Nuevas Técnicas para el Análisis Regional. Una Aplicación a las Regiones Europeas". *Investigaciones Regionales*, 1:83-106</span>
+
+- <span style="font-size:130%">Paelinck, J. (2013). "Spatial Econometrics: A Personal Overview". Studia
+Ekonomiczne, 152:106-118</span>
+
+---
+name: motivacion
+# <span style="font-size:80%">Motivación</span>
+<font size = "5">
+
+- Antes de la década de los ochenta la corriente dominante de la economía no le prestaba atención a la dimensión del espacio en el análisis económico <span style="color:blue"> $\Longrightarrow$ una economía incorpórea, sin ciudades ni regiones
+
+- La introducción de la dimensión espacial en la teoría económica convencional supone modificaciones rigurosas a los resultados tradicionales del análisis competitivo, <span style="color:blue">sobre todo en referencia a su influencia sobre la organización industrial local y su capacidad de potenciar el crecimiento
+
+- La idea es que las  <span style="color:blue">decisiones de localización</span> de las firmas generan una <span style="color:blue">distribución espacial</span> de las actividades económicas:  <span style="color:blue">concentradas en algunos puntos o dispersas por todo un territorio
+
+- La teoría de la organización industrial y del crecimiento económico $\Longrightarrow$ <span style="color:blue">principios de la competencia perfecta y los rendimientos constantes a escala
+
+- <span style="color:blue">El espacio actúa como un fallo de mercado</span> $\Longrightarrow$ por lo que el supuesto de competencia perfecta es un supuesto muy restrictivo 
+
+---
+name: NGE
+# <span style="font-size:80%">La Nueva Geografía Económica (NGE)</span>
+<font size = "5">
+
+- La NGE - Krugman, Fujita, Venables y otros: intenta explicar la formación de una variedad de aglomeraciones (o concentraciones) en el espacio geográfico
+
+- Para que la teoría de la localización tenga sentido, es necesario alejarse del enfoque de rendimientos constantes a escala y mercados competitivos 
+
+	$\Longrightarrow$ <span style="color:blue">la introducción del espacio limita la competencia</span> 
+	
+	$\Longrightarrow$ <span style="color:blue">la propia localización se constituye como una barrera a la entrada</span>
+	
+	$\Longrightarrow$ <span style="color:blue">la localización proporciona un cierto poder de mercado a las empresas ahí ubicadas
+
+<p style="margin-top: 2em">
+	
+<div class = "block">
+<span style="color:blue">Los rendimientos crecientes son fundamentales para explicar la concentración territorial de la producción
+</div>
+
+---
+# <span style="font-size:80%">La Nueva Geografía Económica (NGE)</span>
+<font size = "5">
+
+- Con rendimientos no crecientes
+
+ $\Longrightarrow$ <span style="color:blue">cada empresa distribuye sus actividades entre todas las áreas de consumo posible
+ 
+ $\Longrightarrow$ <span style="color:blue">el nivel de producción será el que satisface la demanda local
+ 
+ $\Longrightarrow$ <span style="color:blue">los costes de transporte no existen
+ 
+ $\Longrightarrow$ <span style="color:blue">cada mercado será una autarquía
+ 
+ $\Longrightarrow$ <span style="color:blue">FKV: "backyard capitalism": cada hogar o pequeño grupo produce la mayoría de los productos que consume
+
+---
+# <span style="font-size:80%">La Nueva Geografía Económica (NGE)</span>
+<font size = "5">
+
+- Las ciudades son el ejemplo más claro de la existencia de <span style="color:blue">externalidades</span> en la economía real
+
+- La concentración espacial provee a las empresas de una serie de beneficios que generan un tipo especial de economías externas $\Longrightarrow$ <span style="color:blue">las economías de aglomeración
+
+- **Aglomeración**: la concentración de la actividad económica, originada y sostenida por una especie de lógica circular
+	
+<div class = "block">
+<span style="font-size:110%; font-weight: bold; color:blue"> Lógica circular de la concentración de la actividad</span>
+
+<span style="text-align: justify; display:block; color:blue">Los clientes potenciales de una determinada actividad van donde se encuentra concentrada esta actividad porque allí esperan encontrar una variedad de establecimientos en donde ver y hojear los productos; y las tiendas están en ese lugar porque saben que es el sitio idóneo de clientes potenciales
+</div>
+	
+- **Economías de aglomeración**: todas aquellas externalidades o ventajas que se derivan de una estructura espacial concentrada 
+
+---
+# <span style="font-size:80%">La Nueva Geografía Económica (NGE)</span>
+<font size = "5">
+
+- La concentración espacial de las actividades económicas se justifica mediante <span style="color:blue">la existencia de economías externas de aglomeración que reducen los costes de producción dentro de unos determinados límites territoriales</span>
+
+- Este proceso genera, asimismo, una dinámica industrial capaz de atraer actividades complementarias y generar servicios especializados, así como fomentar la innovación tecnológica
+
+- Componentes esenciales de la NGE para explicar la tendencia a la concentración de las actividades económicas en el espacio:
+<p style="margin-top: -0.5em">
+  - <span style="color:blue">''El amor por la variedad''</span>: la aglomeración o la clusterización de la actividad económica ocurre a muchos niveles geográficos, teniendo una variedad de composiciones
+  - <span style="color:blue">Las economías de escala</span>: sin éstas la producción tendría lugar de forma perfectamente dispersa, en proximidad de la localización de cada individuo
+  - <span style="color:blue">Los costos de transporte</span>: representan una metáfora de todos los elementos de fricción espacial $\Longrightarrow$ aquellos elementos que hacen privilegiada y más apetecida una localización concentrada respecto a una dispersa
+  - <span style="color:blue">El tamaño de los mercados internos</span>: factores de demanda 
+
+---
+name: ecoespacial
+# <span style="font-size:80%">¿Por qué estudiar la economía espacial?</span>
+<font size = "5">
+
+- <span style="color:blue">Todos los fenómenos económicos toman lugar en el espacio geográfico</span>: 
+<p style="margin-top: -0.5em">
+  - todos los productos son comerciados en diferentes localizaciones
+	- para alcanzar la apropiada localización los productos deben ser transportados y entregados a través del espacio
+	- las actividades de servicios toman lugar en particulares localizaciones
+	- el conocimiento y la información requerida para llevar a cabo la actividad debe ser transmitida o adquirida a travás del espacio geográfico  
+
+- Las razones de porqué los mercados son localizados en un particular lugar son de importancia económica y la naturaleza y comportamiento de los mercados depende de su localización: <span style="color:blue">el desempeño de los mercados dependen parcialmente de la geografía</span>
+
+- El desempeño económico de un área depende de la naturaleza y desempeño de diferentes mercados localizados en un área
+
+<div class = "block">
+<span style="color:blue">Geografía y economía son temas usualmente interrelacionados</span>
+</div>
+
+---
+# <span style="font-size:80%">¿Por qué estudiar la economía espacial?</span>
+<font size = "5">
+
+- Antes de los 90, las cuestiones espaciales fueron ignoradas por economistas y *policy-makers*:
+<p style="margin-top: -0.5em">
+  - todo el sistema económico es asumido a tomar lugar en una ''cabeza de alfiler''
+	- por muchos años la mayoría de temas sobre geografía económica fueron asumidas por las <span style="color:blue">teorías de Ricardo de ventajas comparativas y comercio internacional
+
+- Desde los 90 ha habido un incremento en el interés por temas de economía espacial:
+<p style="margin-top: -0.5em">
+  - trabajos sobre temas urbanos y regionales llevados a cabo por el Banco Mundial, la OECD, la Comisión Europea y las Naciones Unidas
+  - cambio en el pensamiento de los países sobre el importante rol jugado por las ciudades y las regiones
+  - los aportes analíticos de autores como <span style="color:blue">Paul Krugman</span> (Nobel de Economía en 2008) y <span style="color:blue">Michael Porter</span> 
+  
+---
+# <span style="font-size:80%">¿Por qué estudiar la economía espacial?</span>
+<font size = "5">
+
+El análisis de la economía espacial ha sido dividida en dos sub-campos: economía urbana y economía regional
+
+<span style="color:blue">Economía urbana</span>
+<p style="margin-top: -1em">
+- se preocupa por cuestiones sobre la naturaleza y cómo funcionan la economía de la ciudad
+- su límite es la ciudad
+- tiende a enfatizar sobre temas o relaciones operando principalmente en un lugar
+- la pregunta central tiende a ignorar las áreas y se centra en analizar el funcionamiento de una ciudad individual
+
+<p style="margin-top: -0.5em">
+
+<span style="color:blue">Economía regional</span>
+<p style="margin-top: -1em">
+- se encuentra más relacionada con temas sobre áreas espaciales más grandes que una ciudad
+- tiende a enfatizar sobre temas o relaciones operando principalmente entre entre lugares
+- la pregunta central es sobre las razones de porqué partes individuales de un mismo país o grupos de países se comportan diferente uno del otro
+
+<p style="margin-top: -0.5em">
+
+Existen muchos temas que pueden ser analizados desde la economía urbana y regional: la localización de las ciudades y firmas, la migración laboral...
+
+---
+name: econespacial
+# <span style="font-size:80%">El porqué de la econometría espacial</span>
+<font size = "5">
+
+- Cuando se trabajan con datos de corte transversal suelen aparecer los denominados <span style="color:blue">efectos espaciales</span>: la <span style="color:blue">heterogeneidad</span> y la <span style="color:blue">dependencia espacial</span>
+
+- <span style="color:blue">Heterogeneidad espacial</span>: este efecto aparece cuando se utilizan datos de unidades espaciales muy distintas para explicar un mismo fenómeno $\Longrightarrow$ aparecen problemas como la <span style="color:blue">heteroscedasticidad</span> o la <span style="color:blue">inestabilidad estructural</span>
+
+- <span style="color:blue">Dependencia espacial</span>: o autocorrelación espacial, surge siempre que el valor de una variable en un lugar del espacio está relacionado con su valor en otro u otros lugares del espacio
+
+- Mientras la heterogeneidad espacial puede ser tratada por técnicas estándar de econometría, la dependencia espacial no. Esto se debe a la <span style="color:blue">multidireccionalidad que domina las relaciones de interdependencia entre unidades espaciales</span>
+
+- La econometría espacial, como subdisciplina de la econometría, surge como respuesta para resolver la presencia de efectos espaciales
+
+---
+# <span style="font-size:80%">El porqué de la econometría espacial</span>
+<font size = "5">
+
+El término econometría espacial fue introducido por Jean Paelinck en los 70. En el libro *Spatial Econometrics*, Paelinck y Klaassen resaltan cinco características en el análisis espacial que deben ser consideradas:
+
+- el rol de la interdependencia espacial en los modelos espaciales
+
+- las asimetrías en las relaciones espaciales
+
+- la importancia de factores explicatorios localizados en otros espacios
+
+- diferenciación entre interacciones *ex post* y *ex ante*
+
+- modelación explicita del espacio
+
+---
+# <span style="font-size:80%">El porqué de la econometría espacial</span>
+<font size = "5">
+
+Causas de la dependencia espacial:
+<p style="margin-top: -1em">
+- la delimitación arbitraria de las unidades espaciales de observación (ejemplo, zonas censales, limites municipales, departamentales...)
+- problemas de agregación espacial
+- la presencia de externalidades y efectos de desbordamiento
+
+Causa de la heterogeneidad espacial:
+<p style="margin-top: -1em">
+- falta de estabilidad en el espacio del comportamiento de la variable u otras relaciones bajo estudio
+- esto implica que la forma funcional y los parámetros varían con la localización y no son homogóneos en los datos
+- puede ocurrir al estimar modelos econométricos con datos de sección cruzada de unidades espaciales diferentes, como regiones ricas y pobres
+
+La heterogeneidad espacial se puede tratar con la econometría estándar que tenga en cuenta la inestabilidad estructural, mientras que la dependencia espacial implica tener en cuenta dicha dependencia en el modelo de regresión (problema de variables omitidas)
+
+---
+name: softwares
+# <span style="font-size:80%">Softwares más utilizados en el análisis de datos espaciales</span>
+<font size = "5">
+
+- [R](http://ndl.ethernet.edu.et/bitstream/123456789/44390/1/243.pdf)
+- [Matlab](https://www.mathworks.com/academia/books/introduction-to-spatial-econometrics-lesage.html)
+- [Python](https://pysal.org/)
+- [GeoDa](https://spatial.uchicago.edu/geoda)
+- [QGis](https://docs.qgis.org/3.40/en/docs/gentle_gis_introduction/index.html)
+- [ArcGis](https://spatialstats-analysis-1.hub.arcgis.com/)
+- [Stata](https://link.springer.com/book/10.1007/978-3-031-57182-4)
+
+---
+name: data
+# <span style="font-size:80%">Fuentes de información de datos espaciales</span>
+<font size = "5">
+
+- [IGAC](https://www.igac.gov.co/datos-abiertos/datos-abiertos-geoespaciales)
+- [DANE](https://geoportal.dane.gov.co/#gsc.tab=0)
+- [IDESC-Cali](https://www.cali.gov.co/planeacion/publicaciones/3560/idesc/)
+- [Geomedellin](https://www.medellin.gov.co/geomedellin/)
+-	[IDECA-Bogotá](https://www.ideca.gov.co/)
+- [GeoDa](https://geodacenter.github.io/data-and-lab/)
