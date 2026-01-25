@@ -9,3 +9,6 @@ Profesor: [Gustavo A. García](https://gusgarciacruz.github.io/cv)
 
 [Introducción](https://gusgarciacruz.github.io/EconometriaEspacial/Introduccion/Introduccion.html)
 
+[Taller 1](https://gusgarciacruz.github.io/EconometriaEspacial/Taller 1/Taller1.html) ([PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Taller 1/Taller1.pdf))
+
+[Mapas](https://gusgarciacruz.github.io/EconometriaEspacial/Mapas)
