@@ -118,7 +118,9 @@ Link slides en formato [PDF](https://gusgarciacruz.github.io/EconometriaEspacial
 
 - <span style="font-size:150%">[<span style="color:black">Softwares más utilizados en el análisis de datos espaciales](#softwares)</span> <br> <br>
 
-- <span style="font-size:150%">[<span style="color:black">Fuentes de información de datos espaciales](#data)</span>
+- <span style="font-size:150%">[<span style="color:black">Fuentes de información de datos espaciales](#data)</span> <br> <br>
+
+- <span style="font-size:150%">[<span style="color:black">Ejercicio aplicado en R](#r)
 
 ---
 # <span style="font-size:80%">Lecturas</span>
@@ -356,3 +358,14 @@ name: data
 - [Geomedellin](https://www.medellin.gov.co/geomedellin/)
 -	[IDECA-Bogotá](https://www.ideca.gov.co/)
 - [GeoDa](https://geodacenter.github.io/data-and-lab/)
+
+---
+name: r
+# <span style="font-size:80%">Ejercicio aplicado en R</span>
+<font size = "5">
+
+En este ejercicio aplicado se va a analizar la distribución espacial del PIB per cápita departamental en 2024. En los siguientes links se encuentran los datos, los shapefiles y el código utilizado en R: 
+
+- [Datos](https://www.dane.gov.co/files/operaciones/PIB/anex-PIBDep-TotalDep-2024pr.xlsx)
+- [Shapefiles](https://gusgarciacruz.github.io/EconometriaEspacial/Introduccion/col.zip)
+- [Código en R](https://gusgarciacruz.github.io/EconometriaEspacial/Introduccion/L1.R)

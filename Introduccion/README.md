@@ -9,4 +9,6 @@
 
 - <span style="font-size:150%">Softwares más utilizados en el análisis de datos espaciales</span> <br>
 
-- <span style="font-size:150%">Fuentes de información de datos espaciales</span>
+- <span style="font-size:150%">Fuentes de información de datos espaciales</span> <br>
+
+- <span style="font-size:150%">Ejercicio aplicado en R</span>
