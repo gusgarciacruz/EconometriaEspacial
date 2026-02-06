@@ -540,10 +540,8 @@ knitr::include_graphics("kd.png")
 <span style="color:blue">La función $M$ (Marcon y Puech (2010))</span>
 <p style="margin-bottom: -1em">
 
-- La función $M$ es una función acumulativa que da la frecuencia relativa de vecinos de un tipo de empresa hasta cada distancia, comparada al mismo ratio en todo el  área bajo estudio
-<p style="margin-bottom: -0.5em">
-- La formula es dada por:
-
+La función $M$ es una función acumulativa que da la frecuencia relativa de vecinos de un tipo de empresa hasta cada distancia, comparada al mismo ratio en todo el  área bajo estudio. La formula es dada por:
+<p style="margin-top: -0.8em">
 $$M_S(r)=\sum_{i=1}^{N_S}\frac{\sum_{j=1,i\neq j}^{N_S}c_S(i,j,r)w_j}{\sum_{j=1,i\neq j}^{N}c(i,j,r)w_j}\Big/\sum_{i=1}^{N_S}\frac{W_S-w_i}{W-w_i}$$
 <p style="margin-bottom: -1em">
 <font size = "4">
@@ -609,6 +607,7 @@ knitr::include_graphics("M.png")
 - $M$ evalúa mejor el efecto global de la superposición de estructuras espaciales $\Longrightarrow$ responde a preguntas del tipo ¿hasta que distancia las externalidades importan?
 - $M$ y $K_{d}$ parecen ser funciones más complementarias que sustitutas
 
+<p style="margin-top: -0.5em">
 <span style="color:blue">Propiedades que cumplen $K_{d}$ y $M$ para ser buenas medidas de concentración (Duranton y Overman (2005))
 <p style="margin-bottom: -1em">
 - Los resultados deben ser comparables a través de las industrias
@@ -628,6 +627,6 @@ Se va a realizar un análisis de la distribución espacial de las empresas y se 
 
 En los siguientes links se encuentran los datos, el shapefile y el código utilizado en R: 
 
-- [Datos]((https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/datar.csv)
+- [Datos](https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/datar.csv)
 - [Shapefile](https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/Barrios.zip)
 - [Código en R](https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/L3_2.R)
