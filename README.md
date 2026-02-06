@@ -11,6 +11,8 @@ Profesor: [Gustavo A. García](https://gusgarciacruz.github.io/cv)
 
 [Análisis de datos espaciales](https://gusgarciacruz.github.io/EconometriaEspacial/AnalisisDatosEspaciales/AnalisisDatosEspaciales.html)
 
+[Economías de aglomeración](https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/EcoAglomeracion.html)
+
 [Taller 1](https://gusgarciacruz.github.io/EconometriaEspacial/Taller1/Taller1.html) ([PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Taller1/Taller1.pdf))
 
 [Critical review](https://gusgarciacruz.github.io/EconometriaEspacial/CR.pdf)
