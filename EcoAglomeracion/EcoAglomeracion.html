@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Economías de aglomeración</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Gustavo A. García   ggarci24@eafit.edu.co                  " />
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <link href="libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Economías de aglomeración
+]
+.author[
+### Gustavo A. García <br> <span class="notbold" style="font-size:65%"><a href="mailto:ggarci24@eafit.edu.co" class="email">ggarci24@eafit.edu.co</a></span> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+]
+.date[
+### <span class="notbold" style="font-size:65%">Econometría Espacial<br> PhD/Maestría en Economía <br> Universidad EAFIT</span>
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.notbold{
+    font-weight:normal
+}
+
+body {
+text-align: justify;
+}
+
+h1{
+      margin-top: -1px;
+      margin-bottom: -3px;
+}
+
+.small-code pre{
+  margin-bottom: -10px;
+  
+}  
+
+.medium-code pre{
+  margin-bottom: 2px;
+  
+}
+
+p.comment {
+background-color: #E1E1FF;
+padding: 10px;
+border: 1px solid white;
+margin-left: 25px;
+border-radius: 15px;
+text-align: justify;
+}
+
+div.block { 
+background-color: #E1E1FF;
+padding: 10px;
+border: 1px solid white;
+margin-left: 25px;
+border-radius: 15px;
+text-align: justify;
+}
+
+&lt;/style&gt;
+
+
+
+
+
+
+&lt;font size = "5"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+Link slides en formato [html](https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/EcoAglomeracion.html)
+
+Link slides en formato [PDF](https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/EcoAglomeracion.pdf)
+
+---
+# &lt;span style="font-size:80%"&gt;En este tema&lt;/span&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Motivación](#motivacion)&lt;/span&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Economías de aglomeración](#ecoaglomera)&lt;/span&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Fuentes de las economías de aglomeración](#fuentes)&lt;/span&gt; 
+&lt;p style="margin-bottom: -1em"&gt;
+  1. &lt;span style="font-size:140%"&gt;[&lt;span style="color:black"&gt;Desbordamiento de conocimiento (learning)](#learning)&lt;/span&gt;
+  2. &lt;span style="font-size:140%"&gt;[&lt;span style="color:black"&gt;Insumos locales no comerciables (sharing)](#sharing)&lt;/span&gt;
+  3. &lt;span style="font-size:140%"&gt;[&lt;span style="color:black"&gt;Mano de obra calificada local (matching)](#matching)&lt;/span&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Los tipos de economías de aglomeración](#tipos)&lt;/span&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Midiendo las economías de aglomeración](#midiendo)&lt;/span&gt; &lt;br&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+  1. &lt;span style="font-size:140%"&gt;&lt;span style="color:black"&gt;Índice de Ellison y Glaeser (EG)&lt;/span&gt;
+  2. &lt;span style="font-size:140%"&gt;[&lt;span style="color:black"&gt;Índice de Maurel y Sédillot (1999) (MS)](#ms)&lt;/span&gt;
+  3. &lt;span style="font-size:140%"&gt;[&lt;span style="color:black"&gt;Medidas de especialización espacial](#esp)&lt;/span&gt;
+  4. &lt;span style="font-size:140%"&gt;[&lt;span style="color:black"&gt;Medidas de concentración espacial basadas en la distancia](#dis)&lt;/span&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Ejercicio aplicado en R](#r)&lt;/span&gt; 
+
+---
+# &lt;span style="font-size:80%"&gt;Lecturas&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+- Duranton G. y Puga D. (2004). ''Micro-Foundations of Urban Agglomeration Economies''. En: Henderson J, Thisse J (eds) Handbook of Regional and Urban Economics, vol 4, pp 2063–2117.
+
+- Rosenthal, S. y Strange, W. (2004). ''Evidence on the Nature and Sources of Agglomeration Economies''. En: Henderson J, Thisse J (eds) Handbook of Regional and Urban Economics, vol 4, pp 2019-2171.
+
+- Puga D. (2010). ''The Magnitude and Causes of Agglomeratios Economies''. *Journal of Regional Science*, 50(1):203-219.
+
+- Ellison G. y Glaeser E.L. (1997). ''Geographic Concentration in U.S. Manufacturing Industries: A Dartboard Approach''. *Journal of Political Economy*, 105(5):889-927. 
+
+- Marcon, E. y Puech, F. (2017). ''A Typology of Distance-based Measures of Spatial Concentration'', *Regional Science and Urban Economics*, 62:56-67.
+
+- García, G. y Moreno-Monroy, A. (2016). ''Intra-metropolitan Clustering of Formal and Informal Manufacturing Activity: Evidence from Cali, Colombia'', *Tijdschrift voor economische en sociale geografie*, 107(4):389–406.
+
+---
+name: motivacion
+# &lt;span style="font-size:80%"&gt;Motivación&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+En esta sección se analizan las razones de la concentración de la actividad económica:
+&lt;p style="margin-bottom: -1em"&gt;
+- determinar por qué las actividades están generalmente agrupadas, juntas geográficamente
+
+- las razones de por qué las firmas a menudo están concentradas juntas en el espacio
+
+- medir el grado de concentración
+
+---
+name: ecoaglomera
+# &lt;span style="font-size:80%"&gt;Economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Existen ventajas y es más eficiente gestionar las relaciones personales, sociales, económicas y de poder de forma espacialmente concentrada
+
+- Existen importantes ventajas económicas con una estructura espacial concentrada
+
+- Se asocian a un ahorro de costos derivado de la concentración de las empresas
+
+- La mayor eficiencia de un modelo concentrado reside en la &lt;span style="color:blue"&gt;indivisibilidad&lt;/span&gt; o &lt;span style="color:blue"&gt;economías a escala&lt;/span&gt; `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;solamente alcanzando una dimensión o una escala suficiente de actividad es posible utilizar procesos productivos más eficientes&lt;/span&gt;
+
+- Alfred Marshall (1890, 1920) fue el primero en proveer una detallada descripción de las fuentes de las economías de aglomeración
+
+- Marshall: las economías de aglomeración son generalmente entendidas a ser economías externas `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;son independientes a una sola firma, pero las cuales se acumulan a todas las firmas localizadas en la misma  área
+
+---
+name: fuentes
+# &lt;span style="font-size:80%"&gt;Fuentes de las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Para que la concentración se genere, las firmas tienen que alcanzar retornos crecientes a escala
+
+- Marshall describió  tres razones por lo cuales  éstas economías a escala pueden alcanzarse:
+&lt;p style="margin-bottom: -1em"&gt;
+  1. desbordamiento de conocimiento (&lt;span style="color:blue"&gt;learning&lt;/span&gt;)
+	2. Insumos locales no comerciables (&lt;span style="color:blue"&gt;sharing&lt;/span&gt;)
+	3. mano de obra calificada local (&lt;span style="color:blue"&gt;matching&lt;/span&gt;)
+
+---
+name: learning
+# &lt;span style="font-size:80%"&gt;Fuentes de las economías de aglomeración: learning&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Las firmas concentradas en una misma localización puede implicar que existe una alta interacción de los trabajadores entre las firmas `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;fácil contacto en términos de negocios o de una forma más informal como relaciones sociales&lt;/span&gt;
+&lt;p style="margin-bottom: -.6em"&gt;
+- Esta interacción social permite una transmisión de conocimientos tácitos
+&lt;p style="margin-bottom: -.6em"&gt;
+- &lt;span style="color:blue"&gt;Conocimientos tácitos&lt;/span&gt;: conocimientos o información que es incompleta, que es compartida sobre la base de relaciones de no-mercado y pueden relacionarse con temas de nuevos productos, personal, tecnología y tendencias del mercado
+&lt;p style="margin-bottom: -.6em"&gt;
+- Esta transmisión de información permite a cada individuo construir una visión del comportamiento del mercado y por tanto mejorar sus habilidades en  éste 
+&lt;p style="margin-bottom: -.6em"&gt;
+- &lt;span style="color:blue"&gt;Entre más participantes existan en el área local, más completa será  la información de cada individuo&lt;/span&gt;
+&lt;p style="margin-bottom: -.6em"&gt;
+- &lt;span style="color:blue"&gt;La ventaja de la clusterización espacial en este caso es que la proximidad maximiza el acceso de todos los individuos en el cluster, y por tanto mejora el conocimiento y la información disponible a los participantes en el  área concentrada&lt;/span&gt;
+&lt;p style="margin-bottom: -.6em"&gt;
+- Ejemplos de  áreas concentradas: Wall Street, The City en Londres o el distrito Marunouchi en Tokyo, Silicon Valley en San Francisco, California
+
+---
+# &lt;span style="font-size:80%"&gt;Fuentes de las economías de aglomeración: learning&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+De acuerdo con Duranton y Puga (2004), y Puga (2010) existen tres mecanismos de aprendizaje: 
+
+**&lt;span style="color:blue"&gt;Generación de conocimiento&lt;/span&gt;**
+&lt;p style="margin-bottom: -1em"&gt;
+- &lt;span style="color:blue"&gt;La diversidad del ambiente urbano (o concentrado) juega un rol importante en facilitar la búsqueda y experimentación en innovación&lt;/span&gt; 
+&lt;p style="margin-bottom: -.5em"&gt;
+- El modelo: Coexistencia de ciudades (o concentraciones) diversas y especializadas en donde existe una aglomeración de firmas en diferentes etapas de su ciclo de vida
+&lt;p style="margin-bottom: -.5em"&gt;
+- Cuando coexisten  áreas diversificadas y especializadas es porque cada firma encuentra en estas caracterésticas su mejor interés para localizarse en una ubicación diversa mientras busca su proceso ideal y luego a re-localizarse a un lugar especializado donde todas las firmas usan el mismo tipo de proceso
+&lt;p style="margin-bottom: -.5em"&gt;
+- &lt;span style="color:blue"&gt;La localización en un área diversa durante la etapa de aprendizaje de una firma puede ser visto como una inversión&lt;/span&gt; `\(\Longrightarrow\)` es costoso ya que hay costos de congestión por tener muchas empresas concentradas, pero para aquellas usando el mismo proceso existe una reducción de los costos
+
+---
+# &lt;span style="font-size:80%"&gt;Fuentes de las economías de aglomeración: learning&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Adicionalmente, la diversidad le permite a la firma buscar el proceso ideal de producción y luego re-localizarse en busca de este proceso con unos bajos costos `\(\Longrightarrow\)` &lt;span style="color:blue"&gt;las localizaciones diversas actúan como una "enfermería" para las firmas&lt;/span&gt;
+
+- Una vez la firma encuentra su proceso ideal de producción, ésta no se beneficia más de la diversidad y si la re-localización no es costosa, la firma se moverá para evitar la congestión impuesta por la presencia de otras firmas usando diferentes tipos de procesos, re-localizándose donde todas firmas compartan su especialización
+
+
+---
+# &lt;span style="font-size:80%"&gt;Fuentes de las economías de aglomeración: learning&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+**&lt;span style="color:blue"&gt;Difución de conocimiento&lt;/span&gt;**
+&lt;p style="margin-bottom: -1em"&gt;
+- Transmisión de habilidades e ideas: la proximidad a individuos con mayores habilidades o conocimientos facilita la adquisición de habilidad y el intercambio y difusión de conocimiento
+- La difusión de información y conocimiento: aprendizaje social, por ejemplo la aglomeración de comensales en un restaurante, la propagaci n de rumores in las ciudades, el aprendizaje boca a boca en los barrios...
+
+**&lt;span style="color:blue"&gt;Acumulación de conocimiento&lt;/span&gt;**
+&lt;p style="margin-bottom: -1em"&gt;
+- Esta se puede dar por la acumulaci n de capital humano
+- La interacción entre trabajadores de la ciudad, tanto si pertenecen al mismo sector como a sectores diferentes, permite la acumulaci n de sus conocimientos y genera un efecto positivo a nivel de ciudad
+
+---
+name: sharing
+# &lt;span style="font-size:80%"&gt;Fuentes de las economías de aglomeración: sharing&lt;/span&gt;
+&lt;font size = "5"&gt;
+- La concentración de firmas de la misma industria implica la posibilidad de cierta especialización de insumos a ser proveída por el grupo, en una forma más eficiente que en el caso en que las firmas estuvieran dispersas
+
+- Por ejemplo, en Wall Street existen muchas firmas de abogados o de software quienes sólo tienen el rol de proveer servicios especializados al sector financiero
+
+- Un mercado grande permite compartir de una manera más eficiente infraestructura e instalaciones locales, compartir una variedad de proveedores de insumos intermedios, o compartir un pool de trabajadores con similares habilidades  
+
+---
+name: matching
+# &lt;span style="font-size:80%"&gt;Fuentes de las economías de aglomeración: matching&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- La concentración genera una mercado laboral especializado
+
+- Esto permite a las firmas reducir los costos laborales de adquisición `\(\Longrightarrow\)` vía reducción de costos de búsqueda de los trabajadores y vía reducción de costos de entrenamiento
+
+- Un gran mercado permite un mejor *matching* o emparejamiento entre empleadores y empleados, compradores y proveedores, o socios de negocios
+
+- Este mejor *matching* puede tomar la forma de mejores chances de encontrar un adecuado emparejamiento, una mayor calidad de los emparejamientos, o una combinación de ambos
+
+---
+# &lt;span style="font-size:80%"&gt;Fuentes de las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Estas tres fuentes de economías de aglomeración pueden permitir a la firma en un cluster experimentar econom as de escala las cuales son &lt;span style="color:blue"&gt;externas a cualquier firma individual, pero son internas al grupo&lt;/span&gt;
+
+- La principal característica de cada una de estas fuentes de economías de aglomeración es que &lt;span style="color:blue"&gt;la concentración espacial reduce los costos de transacción del conocimiento y la información&lt;/span&gt;
+
+- &lt;span style="color:blue"&gt;La concentración incrementa la probabilidad que la información apropiada sea transmitida, que los servicios especializados requeridos sean dados, y que la mano de obra apropiada este disponible&lt;/span&gt;
+
+---
+name: tipos
+# &lt;span style="font-size:80%"&gt;Los tipos de economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- La naturaleza exacta de las economías de aglomeración pueden ser diferente en diferentes localizaciones
+
+- Ohlin (1933) y Hoover (1937, 1948) dividen las economías de aglomeración en tres tipos:
+&lt;p style="margin-bottom: -1em"&gt;
+	- Economías internas a la empresa
+	- Economías de localización: economías externas a la empresa pero internas a la industria
+	- Economías de urbanización: economías externas a la empresa y a la industria
+
+---
+# &lt;span style="font-size:80%"&gt;Los tipos de economías de aglomeración&lt;/span&gt;
+&lt;font size = "4"&gt;
+
+**&lt;span style="color:blue"&gt;Acumulación de conocimiento `\(\Longrightarrow\)` son específicas a la firma&lt;/span&gt;**
+&lt;p style="margin-bottom: -1em"&gt;
+- Por razones de tamaño, las empresas logran economías de escala en su producción
+- Estas economías de escala son internas a la firma, ya que la eficiencia ganada es explícitamente un resultado del tamaño individual de la firma
+- Estas economías de escala puede considerarse producto de un proceso espacial ya que se puede asumir que son producto de una gran inversión en una localización particular `\(\Longrightarrow\)` las internas economías de escala son de localización específica
+- Ejemplo: La FIAT en Turín o el hangar de la Boing Everett en Seattle, son firmas grandes que requieren una gran cantidad de capital y de mano de obra para estar localizada en un mismo lugar
+
+**&lt;span style="color:blue"&gt;Economías de localización `\(\Longrightarrow\)` son específicas a la industria&lt;/span&gt;**
+&lt;p style="margin-bottom: -1em"&gt;
+- Se trata de las ventajas que se derivan de la localización concentrada de empresas pertenecientes a la misma industria o sector productivo
+- Ejemplo: en el caso de Turín existen muchas firmas alrededor de FIAT ofreciendo servicios especializados, cluster de firmas especializadas 
+
+**&lt;span style="color:blue"&gt;Economías de urbanización `\(\Longrightarrow\)` son específicas a la ciudad&lt;/span&gt;**
+&lt;p style="margin-bottom: -1em"&gt;
+- Son aquellas econom as de aglomeración las cuales se acumulan a las firmas a través de diferentes sectores
+- Se trata de las ventajas, típicas de un ambiente urbano, que se derivan de la presencia de infraestructura genéricas, utilizables por todas las industrias y de la estrecha interacción entre instituciones y actividades diferentes
+
+---
+name: midiendo
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+**&lt;span style="color:blue"&gt;El índice de Ellison y Glaeser (EG)&lt;/span&gt;**
+&lt;font size = "4"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+- El índice de EG resulta de un modelo probabilístico de localización de la planta
+
+- Cuando la localización de las empresas no son independientes, éstas pueden escoger su localización para beneficiarse de las ventajas naturales de una localización particular (acceso a materias primas, buenas condiciones climáticas) o de los *spillovers* generados por la proximidad de otras empresas
+
+- Sea `\(N\)` el número de plantas y `\(z_{1},...,z_{N}\)` la participación de cada planta en el empleo total
+
+- Sea `\(M\)` el número de áreas geográficas y `\(x_{1},...,x_{M}\)` la proporción de empleo de cada región en el empleo total
+
+- La fracción del empleo sectorial en el área `\(i\)` es:
+		
+	`$$s_{i}=\sum\limits_{j=1}^{N} z_{j}u_{ji}$$`	
+donde `\(u_{ji}=1\)` si la planta `\(j\)` está localizada en el  área `\(i\)` y `\(0\)` en otro caso
+
+- `\(u_{ji}\)` son variables Bernouilli tales que `\(P(u_{ji}=1)=x_{i}\)`, lo cual significa que el proceso de localización aleatoria, en promedio, llevar  a un patrón de empleo compartido, lo que es similar al patrón agregado (`\(x_{i}\)`)
+
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+**&lt;span style="color:blue"&gt;El índice de Ellison y Glaeser (EG)&lt;/span&gt;**
+&lt;font size = "4"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+En otras palabras, EG proponen modelar la interacción entre las decisiones de localización de cualquier par de plantas por:
+
+`$$Corr(u_{ji},u_{ki})=\gamma \text{ para } j\neq k$$`
+donde `\(\gamma\)` es un parámetro entre `\(-1\)` y `\(1\)` que describe el grado de *spillovers* en la industria
+
+La probabilidad que dos empresas `\(j\)` y `\(k\)` se localicen en el mismo área `\(i\)` es independiente de `\(j\)` y `\(k\)`, y esto se escribe como:
+
+`$$P(i,i)=E(u_{ji}u_{ki})=Cov(u_{ji}u_{ki})+E(u_{ji})E(u_{ki})=\gamma x_{i}(1-x_{i})+x^{2}_{i}$$`
+Finalmente, la probabilidad que dos empresas se localicen en la misma región es:
+
+`$$p= \sum\limits_{i=1}^{M} P(i,i) = \gamma(1 - \sum\limits_{i=1}^{M} x^{2}_{i}) + \sum\limits_{i=1}^{M} x^{2}_{i}$$`
+
+Una forma de entender el modelo es pensar las plantas como dardos tirados a una diana:
+&lt;p style="margin-bottom: -1em"&gt;
+ - etapa 1: la naturaleza primero elige juntar algunos dardos en grupos (representan grupos de plantas que son suficientemente interdependientes que siempre se van a ubicar juntas
+ - etapa 2: cada cluster o grupo de empresas es aleatoriamente lanzado a la diana para escoger una localización
+ - La importancia de los *spillovers* es capturada por el parametro `\(\gamma\)`, el cual puede ser visto como la "fracción" de plantas entre las cuales la co-localización ocurre
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+**&lt;span style="color:blue"&gt;El índice de Ellison y Glaeser (EG)&lt;/span&gt;**
+&lt;font size = "3"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+EG empiezan empleando el siguiente índice para medir concentración:
+&lt;p style="margin-top: -0.5em"&gt;
+`$$G_{EG}=\sum\limits_{i=1}^{M} (s^{s}_{i}-x_{i})^2$$`
+&lt;p style="margin-top: -0.5em"&gt;
+donde
+&lt;p style="margin-top: -2em"&gt;
+`$$s^{s}_{i}= \frac{emp^{s}_{i}}{\sum\limits_{i=1}^{M} emp^{s}_{i}}: \text{participación del empleo del área } i \text{ en la industria } s$$`
+
+`$$x_{i}= \frac{\sum\limits_{s=1}^{S}emp^{s}_{i}}{\sum\limits_{i=1}^{M} \sum\limits_{s=1}^{S} emp^{s}_{i}}: \text{participación del empleo del área } i \text{ en el empleo total}$$`
+&lt;p style="margin-bottom: -0.8em"&gt;
+Y partir del modelo proponen el siguiente estimador insesgado de `\(\gamma\)`:
+
+`$$\hat{\gamma}_{EG} = \frac{G_{EG}-\left(1-\sum\limits_{i=1}^{M} x^{2}_{i}\right)H}{\left(1-\sum\limits_{i=1}^{M} x^{2}_{i}\right)(1-H)}$$`
+&lt;p style="margin-bottom: -0.8em"&gt;
+donde `\(H=\sum\limits_{j=1}^{N} z^{2}_{j}\)` es un índice de Herfindahl el cual controla por diferencias industriales en cuanto al número y tamaño de empresas
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+**&lt;span style="color:blue"&gt;El índice de Ellison y Glaeser (EG)&lt;/span&gt;**
+&lt;font size = "3"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+
+`$$\hat{\gamma}_{EG} = \frac{\frac{\sum\limits_{i=1}^{M} (s^{s}_{i}-x_{i})^2}{1-\sum\limits_{i=1}^{M} x^{2}_{i}}-H}{1-H}$$`
+
+`$$\hat{\gamma}_{EG} = \frac{\frac{G_{EG}}{1-\sum\limits_{i=1}^{M} x^{2}_{i}}-H}{1-H}$$`
+
+Propiedades:
+&lt;p style="margin-bottom: -1em"&gt;
+- El índice es fácilmente computable
+- La escala del índice permite una comparación con un marco de no aglomeración `\(E(\gamma)=0\)`
+- El índice es comparable a través de las industrias donde la distribución de tamaños de firmas difiere
+
+Interpretando la escala del índice:
+&lt;p style="margin-bottom: -1em"&gt;
+- `\(\gamma = 0\)`: dispersión geográfica
+- `\(\gamma &gt; 0\)`: concentración geográfica
+- `\(\gamma &lt; 0.02\)`: baja concentración geográfica
+- `\(0.02 \leq \gamma \leq 0.05\)`: moderada concentración geográfica 
+- `\(\gamma &gt; 0.05\)`: alta concentración geográfica 
+
+---
+name: ms
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+**&lt;span style="color:blue"&gt;El índice de Maurel y Sédillot (1999) (MS)&lt;/span&gt;**
+
+&lt;p style="margin-bottom: -1em"&gt;
+
+- El modelo de localización de EG no tiene en cuenta cualquier posible correlación entre el tamaño de la planta y la concentración: en cada industria, la probabilidad `\(P(i,i)\)` que dos plantas se co-localicen es independiente de su tamaño
+
+- MS proponen un estimador de `\(\gamma\)` ponderado por el tamaño de la empresa. Al ponderar por el tamaño de la empresa se obtiene el siguiente estimador:
+
+`$$\hat{\gamma}_{MS} = \frac{\frac{\sum\limits_{i=1}^{M} s^{2}_{i} - \sum\limits_{i=1}^{M} x^{2}_{i}}{1-\sum\limits_{i=1}^{M} x^{2}_{i}}-H}{1-H}$$`
+
+
+`$$\hat{\gamma}_{MS} = \frac{\frac{G_{MS}}{1-\sum\limits_{i=1}^{M} x^{2}_{i}}-H}{1-H}$$`
+
+---
+name: esp
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+**&lt;span style="color:blue"&gt;Medidas de especialización espacial&lt;/span&gt;**
+&lt;p style="margin-bottom: -1em"&gt;
+
+- Una de las medidas de especialización más frecuentemente utilizadas es el cociente de localización del empleo (LQ: Location Quotient), también conocido como el coeficiente de Hoover-Balassa
+
+- La idea de esta medida es que una localización o  área particular es definida como especializada en una industria o sector si la participación del empleo de esa localización en la industria o sector supera la participación de todo el área
+
+- Sea `\(M\)` (`\(S\)`) el número de unidades espaciales (sectores), `\(s_i^S=emp_i^S/\sum_{i=1}^M emp_i^S\)` es la proporción de empleo del área `\(i\)` en el sector `\(s\)`, y `\(x_i=\sum_{s=1}^S emp_i^S/\sum_{i=1}^M\sum_{s=1}^S emp_i^S\)` es la propoción del empleo de cada área en el total del empleo. La forma más sencilla de medir en qué medida la ubicación `\(i\)` está especializada en el sector `\(s\)` es, por lo tanto, calcular
+
+`$$LQ^{s}_{i}=\frac{s^{s}_{i}}{x_{i}}$$`
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+**&lt;span style="color:blue"&gt;Medidas de especialización espacial&lt;/span&gt;**
+&lt;p style="margin-bottom: -1em"&gt;
+
+- Complementariamente es posible definir un cociente de empleo industrial (IQ: Industry Quotient) con la idea que una industria debería estar concentrada en una particular localización o área si la participación del empleo en la localización excede la correspondiente participación del área total. La formula de éste coeficiente es: 
+
+`$$IQ^{s}_{i}=\frac{c^{s}_{i}}{x^{s}}$$`
+
+donde `\(c^{s}_{i}=emp^{s}_{i}/\sum\limits_{s=1}^{S} emp^{s}_{i}\)` es la participación del empleo de la industria `\(s\)` en la localización `\(i\)` y `\(x^{s}=\sum\limits_{i=1}^{M} emp^{s}_{i}/\sum\limits_{i=1}^{M}\sum\limits_{s=1}^{S} emp^{s}_{i}\)` es la participación del empleo de la industria `\(s\)` en el empleo total
+&lt;p style="margin-bottom: -.5em"&gt;
+- Valores superiores a 1 indican que la localización (industria) es relativamente especializada (concentrada) en la industria (localización), ya que tiene relativamente más empleo de lo que se prevía con base en su participación agregada 
+
+---
+name: dis
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+**&lt;span style="color:blue"&gt;Medidas de concentración espacial basadas en la distancia&lt;/span&gt;**
+&lt;p style="margin-bottom: -1em"&gt;
+&lt;font size = "4"&gt;
+
+- Con los anteriores índices, el territorio que se esta analizando es dividido en zonas o áreas (por ejemplo, un país es divido en regiones) y la concentración espacial de la actividad es evaluada en un dado nivel de observación
+
+- &lt;span style="color:blue"&gt;Problema de la Unidad de área Modificable (MAUP en inglés)&lt;/span&gt;: los resultados de los  índices pueden cambiar en relación al número de zonas en que se divide el espacio
+
+- Las medidas basadas en distancia dan información sobre la concentración en toda la escala simultáneamente
+
+Principios básicos
+&lt;p style="margin-bottom: -1em"&gt;
+- En estos métodos se estudia la distribución espacial de un tipo de entidad (puntos), por ejemplo tiendas o empresas
+- Su objetivo es detectar fenómenos de atracción (también llamados agregación, aglomeración, localización), repulsión (dispersión) o independencia entre aquellos entidades en un territorio
+- El espacio es tratado como continuo y no como una colección de predefinidas  áreas
+- Las medidas son basadas en la distancia que separa entre par de entidades `\(\Longrightarrow\)` por eso son llamadas métodos basados en la distancia
+- Los resultados son presentados como un gráfico de una función de distancia, cuyos valores son significativos o no, y siempre comparados a unos intervalos de confianza de una hipótesis a ser probada
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -.5em"&gt;
+**&lt;span style="color:blue"&gt;Medidas de concentración espacial basadas en la distancia&lt;/span&gt;**
+
+&lt;span style="color:blue"&gt;La función `\(K_d\)` (Duranton y Overman (2005))&lt;/span&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+- Es la función de probabilidad de densidad en encontrar los puntos que son vecinos a una dada distancia
+- Esta función cuenta y promedia el número de pares de puntos en cada distancia, y suaviza los resultados para obtener una función continua que es normalizada a sumar 1
+- Valores de `\(K_d\)` son comparados al intervalo de confianza de la hipótesis nula que los puntos son distribuidos aleatoriamente
+- La función de densidad viene dada por la siguiente formula:
+
+`$$\hat{K}_d=\frac{1}{n(n-1)}\displaystyle\sum_{i}\displaystyle\sum_{j,i\neq j} k(\left\|x_{i}-x_{j}\right\|,r)$$`
+
+donde `\(n\)` es el número de puntos (por ejemplo empresas), `\(x_{i}\)` es la localización del punto `\(i\)`, `\(\left\|x_{i}-x_{j}\right\|\)` es la distancia entre los puntos `\(i\)` y `\(j\)`, y `\(k(\left\|x_{i}-x_{j}\right\|,r)\)` es una función de suavizamiento que toma el valor de 1 si `\(\left\|x_{i}-x_{j}\right\|\leq r\)` y 0 en otro caso
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -.5em"&gt;
+**&lt;span style="color:blue"&gt;Medidas de concentración espacial basadas en la distancia&lt;/span&gt;**
+
+&lt;span style="color:blue"&gt;La función `\(K_d\)` (Duranton y Overman (2005))&lt;/span&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+
+.pull-left-40[
+&lt;span style="font-size:100%"&gt;Interpretación
+&lt;p style="margin-bottom: -1em"&gt;
+- &lt;span style="font-size:95%"&gt;La localización (dispersión) es detectada cuando la función `\(K_{d}\)` de una industria particular se encuentra por arriba (abajo) de su intervalo de confianza superior (inferior)
+- &lt;span style="font-size:95%"&gt;En este ejemplo es evidente que esta industria muestra dispersión respecto a toda la industria
+- &lt;span style="font-size:95%"&gt;Note que la figura de estos intervalos de confianza refleja la distribución de toda la industria
+]
+
+.pull-right-50[
+&lt;br&gt;&lt;br&gt;
+&lt;img src="kd.png" width="150%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -.5em"&gt;
+**&lt;span style="color:blue"&gt;Medidas de concentración espacial basadas en la distancia&lt;/span&gt;**
+
+&lt;span style="color:blue"&gt;La función `\(M\)` (Marcon y Puech (2010))&lt;/span&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+
+- La función `\(M\)` es una función acumulativa que da la frecuencia relativa de vecinos de un tipo de empresa hasta cada distancia, comparada al mismo ratio en todo el  área bajo estudio
+&lt;p style="margin-bottom: -0.5em"&gt;
+- La formula es dada por:
+
+`$$M_S(r)=\sum_{i=1}^{N_S}\frac{\sum_{j=1,i\neq j}^{N_S}c_S(i,j,r)w_j}{\sum_{j=1,i\neq j}^{N}c(i,j,r)w_j}\Big/\sum_{i=1}^{N_S}\frac{W_S-w_i}{W-w_i}$$`
+&lt;p style="margin-bottom: -1em"&gt;
+&lt;font size = "4"&gt;
+`\(N_S\)`: número de empresas del sector `\(S\)`&lt;br&gt;
+`\(N\)`: número total de empresas&lt;br&gt;
+`\(c_S(i,j,r)\)`: función que toma el valor de 1 si la distancia entre las empresas `\(i\)` y `\(j\)` pertenecientes al sector `\(S\)` es menor o igual a `\(r\)` y 0 en otro caso. La sumatoria de esta función da el número de firmas vecinas de la firma `\(i\)`, pertenecientes al mismo sector y situados a una distancia `\(r\)` de ella&lt;br&gt;
+`\(c(i,j,r)\)`: es igual que la misma función anterior pero para todos los sectores&lt;br&gt; 
+`\(w_i\)`, `\(w_j\)`: pesos asociados a la empresa `\(i\)` y `\(j\)`, que podría ser, por ejemplo, el número de empleados&lt;br&gt;
+`\(W=\sum_{i=1}^{N} w_i\)`, `\(W_S=\sum_{i=1}^{N_S} w_i\)`: representan los pesos totales (por ejemplo, empleo) en todos los sectores y para el sector `\(S\)`, respectivamente 
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -.5em"&gt;
+**&lt;span style="color:blue"&gt;Medidas de concentración espacial basadas en la distancia&lt;/span&gt;**
+
+&lt;span style="color:blue"&gt;La función `\(M\)` (Marcon y Puech (2010))&lt;/span&gt;
+
+`$$M_S(r)=\sum_{i=1}^{N_S}\frac{\sum_{j=1,i\neq j}^{N_S}c_S(i,j,r)w_j}{\sum_{j=1,i\neq j}^{N}c(i,j,r)w_j}\Big/\sum_{i=1}^{N_S}\frac{W_S-w_i}{W-w_i}$$`
+- El numerador corresponde al peso relativo del sector `\(S\)` en comparación con todo el conjunto industrial dentro de un radio `\(r\)`
+
+- El denominador representa el tamaño relativo del sector considerado en comparación con todas las actividades en el área `\(A\)`
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -.5em"&gt;
+**&lt;span style="color:blue"&gt;Medidas de concentración espacial basadas en la distancia&lt;/span&gt;**
+
+&lt;span style="color:blue"&gt;La función `\(M\)` (Marcon y Puech (2010))&lt;/span&gt;
+&lt;p style="margin-bottom: -1.5em"&gt;
+.pull-left-40[
+Interpretación
+&lt;p style="margin-bottom: -1em"&gt;
+&lt;font size = "4"&gt;
+- `\(M=1\longrightarrow\)` Aleatoriamente distribuido&lt;br&gt;
+ `\(M&gt;1\longrightarrow\)` Concentración geográfica&lt;br&gt;
+ `\(M&lt;1\longrightarrow\)` Dispersión geográfica
+ 
+- A diferencia del `\(K_{d}\)`, los valores de `\(M\)` son fácilmente interpretables. Por ejemplo, `\(M_S(r)=2\)` `\(\longrightarrow\)` a una distancia `\(r\)`, la densidad relativa del empleo en el sector `\(S\)` es el doble que en el  área total
+
+- Cuando la función `\(M\)` se encuentra por fuera de los intervalos de confianza y es mayor que 1 decimos que hay significativa concentración. Cuando es menor que 1 y se encuentra por fuera de los intervalos de confianza decimos que hay significativa dispersión. Mientras que si esta por dentro de los intervalos de confianza, decimos que la distribución es aleatoria 
+
+]
+
+.pull-right-50[
+&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;
+&lt;img src="M.png" width="150%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+# &lt;span style="font-size:80%"&gt;Midiendo las economías de aglomeración&lt;/span&gt;
+&lt;font size = "5"&gt;
+&lt;p style="margin-bottom: -.5em"&gt;
+**&lt;span style="color:blue"&gt;Medidas de concentración espacial basadas en la distancia&lt;/span&gt;**
+
+&lt;span style="color:blue"&gt;Diferencias entre `\(K_{d}\)` y `\(M\)`&lt;/span&gt;
+&lt;p style="margin-bottom: -1em"&gt;
+- `\(K_{d}\)` y `\(M\)` son  útiles para evaluar la distribución espacial de las actividades y dependiendo de la pregunta estudiada, se pueden dar más claros resultados con una medida que con otra
+- `\(K_{d}\)` provee una más precisa estimación que `\(M\)` para medir la densidad local de la actividad `\(\Longrightarrow\)` debería ser preferida si el objetivo es la evaluación de la densidad local y responder a preguntas del tipo ¿las externalidades importan a una dada distancia?
+- `\(M\)` evalúa mejor el efecto global de la superposición de estructuras espaciales `\(\Longrightarrow\)` responde a preguntas del tipo ¿hasta que distancia las externalidades importan?
+- `\(M\)` y `\(K_{d}\)` parecen ser funciones más complementarias que sustitutas
+
+&lt;span style="color:blue"&gt;Propiedades que cumplen `\(K_{d}\)` y `\(M\)` para ser buenas medidas de concentración (Duranton y Overman (2005))
+&lt;p style="margin-bottom: -1em"&gt;
+- Los resultados deben ser comparables a través de las industrias
+- Los patrones de aglomeración global deben ser tomados en cuenta
+- Las medidas deben controlar por la concentración industrial
+- Los resultados deben ser insesgados a través de la escala geogrófica (evitar MAUP)
+- Un test de significancia de los resultados debe ser proveído
+
+---
+name: r
+# &lt;span style="font-size:80%"&gt;Ejercicio aplicado en R&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+En este ejercicio se utilizan datos del Censo Económico de 2005 para la ciudad de Cali que contiene información a nivel de empresas, su número de empleados, el sector económico y la localización a nivel de coordenadas XY. 
+
+Se va a realizar un análisis de la distribución espacial de las empresas y se construye un mapa de densidad de la actividad económica, con el fin de determinar en qué partes de la ciudad se encuentra concentradas las empresas.
+
+En los siguientes links se encuentran los datos, el shapefile y el código utilizado en R: 
+
+- [Datos]((https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/datar.csv)
+- [Shapefile](https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/Barrios.zip)
+- [Código en R](https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/L3_2.R)
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
