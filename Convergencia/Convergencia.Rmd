@@ -358,7 +358,7 @@ A nivel bivariante se pueden observar los siguientes casos:
 knitr::include_graphics("g5.png")
 ```
 
-<span style="color:blue">Persistencia</span>: la distribución no cambia, los pobres siguen siendo pobres y los ricos ricos
+<span style="color:blue">Persistencia</span>: la distribución no cambia, los pobres siguen siendo pobres y los ricos ricos<br>
 <span style="color:blue">Movilidad</span>: los ricos son pobres y viceversa<br>
 <span style="color:blue">Convergencia</span>: en $t+s$ la distribución se concentra en un punto<br>
 <span style="color:blue">Divergencia</span>: en $t$ la distribución se concentra en un punto
