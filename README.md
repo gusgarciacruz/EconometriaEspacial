@@ -17,6 +17,8 @@ Profesor: [Gustavo A. García](https://gusgarciacruz.github.io/cv)
 
 [Taller 2](https://gusgarciacruz.github.io/EconometriaEspacial/Taller2/Taller2.html) ([PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Taller2/Taller2.pdf))
 
+[Taller 3](https://gusgarciacruz.github.io/EconometriaEspacial/Taller3/Taller3.html) ([PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Taller3/Taller3.pdf))
+
 [Critical review](https://gusgarciacruz.github.io/EconometriaEspacial/CR.pdf)
 
 [Mapas](https://gusgarciacruz.github.io/EconometriaEspacial/Mapas)
