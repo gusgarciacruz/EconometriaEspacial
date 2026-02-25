@@ -13,6 +13,8 @@ Profesor: [Gustavo A. García](https://gusgarciacruz.github.io/cv)
 
 [Economías de aglomeración](https://gusgarciacruz.github.io/EconometriaEspacial/EcoAglomeracion/EcoAglomeracion.html)
 
+[Convergencia interregional](https://gusgarciacruz.github.io/EconometriaEspacial/Convergencia/Convergencia.html)
+
 [Taller 1](https://gusgarciacruz.github.io/EconometriaEspacial/Taller1/Taller1.html) ([PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Taller1/Taller1.pdf))
 
 [Taller 2](https://gusgarciacruz.github.io/EconometriaEspacial/Taller2/Taller2.html) ([PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Taller2/Taller2.pdf))
