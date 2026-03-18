@@ -17,6 +17,12 @@ Profesor: [Gustavo A. García](https://gusgarciacruz.github.io/cv)
 
 [ESDA](https://gusgarciacruz.github.io/EconometriaEspacial/ESDA/ESDA.html)
 
+[Regresión espacial](https://gusgarciacruz.github.io/EconometriaEspacial/RegEspacial/RegEspacial.html)
+
+[Geographically Weighted Regression](https://gusgarciacruz.github.io/EconometriaEspacial/GWR/GWR.html)
+
+[Modelos espaciales en datos panel](https://gusgarciacruz.github.io/EconometriaEspacial/ModelosPanelEspacial/ModelosPanelEspacial.html)
+
 [Taller 1](https://gusgarciacruz.github.io/EconometriaEspacial/Taller1/Taller1.html) ([PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Taller1/Taller1.pdf))
 
 [Taller 2](https://gusgarciacruz.github.io/EconometriaEspacial/Taller2/Taller2.html) ([PDF](https://gusgarciacruz.github.io/EconometriaEspacial/Taller2/Taller2.pdf))
