@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>Análisis exploratorio de datos espaciales (ESDA)</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="Gustavo A. García   ggarci24@eafit.edu.co                  " />
+    <script src="libs/header-attrs-2.29/header-attrs.js"></script>
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30,"palette":[]}) })</script>
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <link href="libs/font-awesome-6.5.2/css/all.min.css" rel="stylesheet" />
+    <link href="libs/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet" />
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="xaringan-themer.css" type="text/css" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+.title[
+# Análisis exploratorio de datos espaciales (ESDA)
+]
+.author[
+### Gustavo A. García <br> <span class="notbold" style="font-size:65%"><a href="mailto:ggarci24@eafit.edu.co" class="email">ggarci24@eafit.edu.co</a></span> <br> <br> <br> <br> <br> <br> <br> <br> <br>
+]
+.date[
+### <span class="notbold" style="font-size:65%">Econometría Espacial<br> PhD/Maestría en Economía <br> Universidad EAFIT</span>
+]
+
+---
+
+
+
+
+&lt;style&gt;
+.notbold{
+    font-weight:normal
+}
+
+body {
+text-align: justify;
+}
+
+h1{
+      margin-top: -1px;
+      margin-bottom: -3px;
+}
+
+.small-code pre{
+  margin-bottom: -10px;
+  
+}  
+
+.medium-code pre{
+  margin-bottom: 2px;
+  
+}
+
+p.comment {
+background-color: #E1E1FF;
+padding: 10px;
+border: 1px solid white;
+margin-left: 25px;
+border-radius: 15px;
+text-align: justify;
+}
+
+div.block { 
+background-color: #E1E1FF;
+padding: 10px;
+border: 1px solid white;
+margin-left: 25px;
+border-radius: 15px;
+text-align: justify;
+}
+
+&lt;/style&gt;
+
+
+
+
+
+
+&lt;font size = "5"&gt;
+
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+&lt;br&gt;
+
+Link slides en formato [html](https://gusgarciacruz.github.io/EconometriaEspacial/ESDA/ESDA.html)
+
+Link slides en formato [PDF](https://gusgarciacruz.github.io/EconometriaEspacial/ESDA/ESDA.pdf)
+
+---
+# &lt;span style="font-size:80%"&gt;En este tema&lt;/span&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Motivación](#motivacion)&lt;/span&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Contrastes globales de autocorrelación espacial](#globales)&lt;/span&gt; &lt;br&gt;
+
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Contrastes locales de autocorrelación espacial - LISA](#lisa)&lt;/span&gt; &lt;br&gt;
+  
+- &lt;span style="font-size:150%"&gt;[&lt;span style="color:black"&gt;Ejercicio aplicado en R](#r)&lt;/span&gt; 
+
+---
+# &lt;span style="font-size:80%"&gt;Lecturas&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+- Getis, A. y Ord, J.K. (1992). "The analysis of spatial association by use of distance statistics",  *Geographical Analysis*,  24(3):189-206.
+
+- Ord, J.K. y Getis A. (1995), "Local Spatial Autocorrelation Statistics: distributional issues and an application", *Geographical Analysis*,  27(4):286-306.
+
+- Anselin, L. (1995). "Local Indicators of Spatial Association-LISA", *Geographical Analysis*, 27(2):93-115.
+
+- Moreno, R. y Vay , E. (2002). "Econometría Espacial: Nuevas técnicas para el análisis regional. Una aplicación a las regiones europeas". *Investigaciones Regionales*, 1:83-106.
+
+---
+name: motivacion
+# &lt;span style="font-size:80%"&gt;Motivación&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+El ESDA se centra de forma explícita en los efectos espaciales y consiste en un conjunto de técnicas que permiten describir:
+&lt;p style="margin-bottom: -1em"&gt;
+- distribuciones espaciales
+
+- identificar localizaciones atípicas (*outliers* espaciales)
+
+- describir esquemas de asociación espacial (*cluster* espacial)
+
+- sugerir diferentes regímenes espaciales u otras formas de inestabilidad espacial
+
+El ESDA sigue dos dimensiones:
+&lt;p style="margin-bottom: -1em"&gt;
+- indicadores globales de asociación espacial 
+
+- indicadores locales de asociación espacial
+
+---
+# &lt;span style="font-size:80%"&gt;Motivación&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+&lt;p style="margin-bottom: -1em"&gt;
+- Indicadores globales
+&lt;p style="margin-bottom: -1em"&gt;
+ - Constituyen la aproximación más tradicional para detectar dependencia espacial, por el que un esquema general de dependencia se resume en un indicador  único o una función: &lt;span style="color:blue"&gt;la I de Moran&lt;/span&gt; y &lt;span style="color:blue"&gt;la C de Geary&lt;/span&gt; o &lt;span style="color:blue"&gt;el variograma&lt;/span&gt;
+	- Estas medidas suelen utilizarse para conocer el rango de interacción espacial en los datos
+
+- Indicadores locales
+&lt;p style="margin-bottom: -1em"&gt;
+	- Indicadores LISA (*Local Indicator of Spatial Association*)
+&lt;p style="margin-bottom: -1em"&gt;	
+	- Objetivos del LISA:
+      - el valor del estadístico obtenido para cada observación suministra información acerca de la relevancia de una agrupación espacial de valores similares alrededor de la misma
+      - la suma del valor del estadístico para todas las observaciones es igual al indicador global de asociación espacial
+  - Los LISA resultan fáciles de interpretar mediante la visualización en un mapa
+
+---
+name: globales
+# &lt;span style="font-size:80%"&gt;Contrastes globales de autocorrelación espacial&lt;/span&gt;
+&lt;spam style="font-size:107%"&gt;
+
+Ahora pasamos a estudiar cómo contrastar la presencia o ausencia de un esquema de dependencia espacial a nivel univariante. Entre los estadísticos que destacan se encuentran la I de Moran, la C de Geary y la G(d) de Getis y Ord
+	
+&lt;span style="color:blue"&gt;El contraste `\(I\)` de Moran (Moran, 1948)&lt;/span&gt;
+&lt;p style="margin-top: -2.5em"&gt;	
+El estadísitico presenta la siguiente expresión:
+`$$I=\frac{N}{S_{0}}\frac{\sum_{ij}^{N}w_{ij}(x_{i}-\overline{x})(x_{j}-\overline{x})}{\sum_{i=1}^{N}(x_{i}-\overline{x})^2} \text{ } i\neq j$$`
+donde `\(x_{i}\)` refleja el valor de la variable analizada en la región `\(i\)`, `\(\overline{x}\)` es su media muestral, `\(w_{ij}\)` son los pesos de la matrix `\(W\)`, `\(N\)` es el tamaño muestral y `\(S_{0}=\sum_{i}\sum_{j}w_{ij}\)`
+
+Cuando el tamaño muestral es suficientemente grande la `\(I\)` de Moran estandarizada sigue una distribución asintótica normal:
+
+`$$Z(I)=\frac{I-E(I)}{[V(I)]^{1/2}}\sim N(0,1)$$`
+donde `\(E(I)\)` y `\(V(I)\)` son la esperanza y la varianza de `\(I\)`, respectivamente. 
+
+Un valor no significativo de `\(Z(I)\)` lleva a no rechazar la hipótesis nula de no autocorrelación espacial, mientras que un valor significativo positivo (negativo) muestra presencia un esquema de autocorrelación espacial positiva (negativa)
+
+---
+# &lt;span style="font-size:80%"&gt;Contrastes globales de autocorrelación espacial&lt;/span&gt;
+&lt;spam style="font-size:115%"&gt;
+
+&lt;span style="color:blue"&gt;El contraste `\(C\)` de Geary (1954)&lt;/span&gt;
+&lt;p style="margin-top: -1em"&gt;
+La `\(C\)` de Geary (1954) presenta la siguiente expresión:
+`$$C=\frac{N-1}{2S_{0}}\frac{\sum_{ij}^{N}w_{ij}(x_{i}-x_{j})}{\sum_{i=1}^{N}(x_{i}-\overline{x})^2}i\neq j$$`
+donde el significado de sus elementos es equivalente al definido para la I de Moran
+
+Nuevamente a nivel asintótico se puede asumir que tras su estandarización se distribuye normal `\(N(0,1)\)`
+
+Al igual que antes, la hipótesis nula del estadístico `\(C\)` de Geary es la inexistencia de autocorrelación espacial frente a la hipótesis alternativa de presencia de un esquema de dependencia espacial
+
+Sin embargo en este caso, al contrario de lo ocurrido con la `\(I\)` de Moran, un valor negativo (positivo) y significativo de la `\(C\)` de Geary estandarizada, `\(Z(C)\)`, indicar la existencia de un esquema de dependencia espacial positiva (negativa)
+
+---
+# &lt;span style="font-size:80%"&gt;Contrastes globales de autocorrelación espacial&lt;/span&gt;
+&lt;spam style="font-size:115%"&gt;
+
+&lt;span style="color:blue"&gt;El contraste `\(G(d)\)` de Getis y Ord (1992)&lt;/span&gt;
+&lt;p style="margin-top: -1em"&gt;
+
+El test `\(G(d)\)` definido por Getis y Ord (1992) como una medida de concentración espacial de una variable `\(x\)`, presenta la siguiente expresión:
+`$$G(d)=\frac{\sum_{i=1}^{N}\sum_{j=1}^{N}w_{ij}(d)x_{i}x_{j}}{\sum_{i=1}^{N}\sum_{j=1}^{N}x_{i}x_{j}}i\neq j$$`
+donde dos pares de regiones `\(i\)` y `\(j\)` son considerados vecinas siempre que se encuentren dentro de una distancia `\(d\)` determinada (tomando, en este caso, `\(w_{ij}(d)\)` un valor igual a 1, o 0 en caso contrario
+
+Tras la estandarización de `\(G(d)\)`, este estadístico se distribuye como una normal `\(N(0,1)\)`
+
+La hipótesis nula asociada al contraste ya estandarizado, `\(Z(G)\)`, es la ausencia de asociación espacial, mientras que un valor positivo (negativo) y significativo indica la existencia de una tendencia a la concentración de valores elevados (bajos) de `\(x\)` en el espacio analizado
+
+---
+# &lt;span style="font-size:80%"&gt;Contrastes globales de autocorrelación espacial&lt;/span&gt;
+&lt;spam style="font-size:115%"&gt;
+
+- Los resultados obtenidos por los diferentes contrates pueden variar, a veces dramáticamente, en función de la matriz `\(W\)` especificada
+
+- En caso de utilizar una matriz de contigüidad física, es habitual replicar el cálculo del contraste `\(I\)` de Moran para matrices de contigüidad de ordenes superiores, con tal de contrastar si el esquema de autocorrelación espacial detectado entre regiones vecinas es extensible a regiones alejadas en el espacio
+
+- Todos los contrastes de forma conjunta suministran información complementaria, lo cual se debe a la distinta transformación efectuada sobre la variable `\(x\)` y al diferente significado en el signo de los estadísticos
+
+- La `\(I\)` de Moran puede considerarse como una medida de la correlación de cada `\(x_{i}\)` con el resto de regiones con las que se encuentra vinculada, dado que en dicho contraste las variables son introducidas en desviaciones
+
+- La `\(G(d)\)` se basa en una suma de productos de la variable no normalizada, siendo por tanto utilizada como una medida del grado de asociación o concentración de la variable en el espacio
+
+- Cabe destacar que un valor positivo (negativo) de la `\(I\)` de Moran indica la presencia de una asociación entre valores similares (disímiles), mientras que un valor positivo (negativo) de la `\(G(d)\)` indica la existencia de una concentración de valores similares elevados (bajos) de `\(x\)`
+
+---
+# &lt;span style="font-size:80%"&gt;Contrastes globales de autocorrelación espacial&lt;/span&gt;
+&lt;spam style="font-size:115%"&gt;
+
+.pull-left-50[
+- Otro instrumento  útil en el análisis del grado de dependencia espacial de una variable es la observación del denominado &lt;span style="color:blue"&gt;*scatterplot* de Moran&lt;/span&gt;
+
+- En el eje de las abscisas va las observaciones de la variable `\(Y\)` normalizada y en el de ordenadas el retardo espacial de dicha variable
+
+- Si la nube de puntos está  dispersa en los cuatros cuadrantes es indicio de ausencia de correlación espacial
+
+- Si los valores se encuentran concentrados sobre la diagonal que cruza el cuadrante I (derecha superior) y III (izquierda inferior), existe una correlación espacial positiva. Su pendiente es igual al valor obtenido por el contraste de la I de Moran
+
+- La dependencia espacial es negativa si los valores se concentran en los dos cuadrantes restantes
+]
+
+.pull-right-50[
+&lt;img src="f1.png" width="60%" style="display: block; margin: auto;" /&gt;
+]
+
+---
+name: lisa 
+# &lt;span style="font-size:80%"&gt;Contrastes locales de autocorrelación espacial - LISA&lt;/span&gt;
+&lt;spam style="font-size:120%"&gt;
+
+- Los anteriores test son válidos para contrastar la presencia de un esquema de autocorrelación espacial global, dado que analizan todas las regiones de la muestra de forma style="color:blue"&gt;conjunta&lt;/span&gt;
+
+- Por ello, dichos tests no son sensibles a situaciones donde predomina una importante inestabilidad en la distribución espacial de la variable analizada
+
+- Los tests globales no son capaces de captar situaciones donde existen style="color:blue"&gt;clusters o agrupaciones de regiones&lt;/span&gt; localizados en  áreas específicas del territorio que concentrasen valores más elevados o bajos de lo que cabría esperar
+
+- Por tanto, no contemplan la posibilidad de que el esquema de dependencia detectado a nivel global pueda no mantenerse en todas las unidades del espacio analizado
+
+- Esta limitación es superada por los tests locales de asociación espacial: Moran local (`\(I_{i}\)`), el `\(G_{i}(d)\)` y `\(G_{i}^{*}(d)\)` de Getis y Ord
+
+- A partir de estos test se obtiene un valor de dichos estadísticos para cada región, pudiendo así analizar la situación de cada unidad espacial por separado
+
+---
+# &lt;span style="font-size:80%"&gt;Contrastes locales de autocorrelación espacial - LISA&lt;/span&gt;
+&lt;spam style="font-size:120%"&gt;
+
+&lt;span style="color:blue"&gt;El contraste local `\(I_{i}\)` de Moran (Anselin, 1995)&lt;/span&gt;
+&lt;p style="margin-top: -1em"&gt;
+El estadístico tiene la siguiente forma:
+	
+`$$I_{i}=\frac{z_{i}}{\sum\limits_{i}z_{i}^2/N}\sum_{j\in J_{i}}w_{ij}z_{j}\sim N(0,1)$$`
+donde `\(z_{i}\)` es el valor correspondiente a la región `\(i\)` de la variable normalizada y `\(J_{i}\)` el conjunto de regiones vecinas a `\(i\)`
+
+Tras su estandarización, un valor &lt;span style="color:blue"&gt;positivo&lt;/span&gt; (negativo) del contraste de `\(I_{i}\)` indica existencia de un &lt;span style="color:blue"&gt;cluster de valores similares&lt;/span&gt; (disímiles) de la variable analizada alrededor de la región `\(i\)`
+
+---
+# &lt;span style="font-size:80%"&gt;Contrastes locales de autocorrelación espacial - LISA&lt;/span&gt;
+&lt;spam style="font-size:115%"&gt;
+
+&lt;span style="color:blue"&gt;La `\(G_{i}(d)\)` de Getis y Ord (1992 y 1995)&lt;/span&gt;
+&lt;p style="margin-top: -1em"&gt;
+Tiene la siguiente expresión:
+	
+`$$G_{i}(d)=\frac{\sum\limits_{j=1}^{N}w_{ij}(d)x_{j}}{\sum\limits_{j=1}^{N}x_{j}} i\neq j$$`
+donde `\(x\)` es la variable de interés (no normalizada) y `\(w_{ij}(d)\)` son los elementos de la matriz de contactos `\(W\)` para una distancia dada
+
+Getis y Ord construyeron un estadístico similar al anterior, el contraste `\(G_{i}^{*}(d)\)`, pero con la diferencia de que no incorpora la restricción presente en el estadístico `\(G_{i}(d)\)` anterior de `\(j\neq i\)`, permitiendo a su vez que `\(w_{ii}\)` sea diferente de 0:
+		
+`$$G_{i}^{*}(d)=\frac{\sum\limits_{j=1}^{N}w_{ij}(d)x_{j}}{\sum\limits_{j=1}^{N}x_{j}}$$`
+
+---
+# &lt;span style="font-size:80%"&gt;Contrastes locales de autocorrelación espacial - LISA&lt;/span&gt;
+&lt;spam style="font-size:115%"&gt;
+&lt;span style="color:blue"&gt;La `\(G_{i}(d)\)` de Getis y Ord (1992 y 1995)&lt;/span&gt;
+&lt;p style="margin-top: -1em"&gt;
+No obstante, los estadísticos locales construidos por Getis y Ord (1992) en un principio únicamente podían ser aplicados al caso de variables positivas y para matrices de contactos simétricas (binarias o de distancias)
+
+Para solucionar dichas limitaciones, Ord y Getis (1995) reespecifican ligeramente los estadísticos anteriores, obteniendo los denominados `\(New-G_{i}\)` y `\(New-G_{i}^{*}\)`, cuyas expresiones generales son las siguientes (expresiones ya estandarizadas):
+
+`$$New-G_{i} = \frac{\sum\limits_{j=1}^{N}w_{ij}x_{j} - W_{i}\overline{x}(i)}{s(i)\left\{\left[((N-1)S_{1i})-W_{i}^{*2} \right]/(N-2)\right\}^{1/2}} \text{ con } j\neq i$$`
+`$$New-G_{i}^{*} = \frac{\sum\limits_{j=1}^{N}w_{ij}x_{j} - W_{i}^{*}\overline{x}}{s\left\{\left[(NS_{1i}^{*}-W_{i}^{*2} \right]/(N-1)\right\}^{1/2}}$$`
+donde `\(s(i)^{2}= \frac{\sum_{j} x_{j}^{2}}{N-1}-(\overline{x}(i))^{2}\)`, `\(\overline{x}(i)=\frac{\sum_{j} x_{j}}{N-1}\)`, `\(S_{1i}=\sum_{j}w_{ij}^{2}\)` para `\(j\neq i\)`, `\(S_{1i}^{*}=\sum_{j} w_{ij}^{2}\)`, `\(W_{i}^{*}=W_{i}+w_{ii}\)` y `\(W_{i}=\sum\limits_{j\neq i}w_{ij}(d)\)`
+
+Con independencia de la expresión finalmente utilizada, tras la estandarización de los estadísticos locales de Getis y Ord (distribuyéndose todos los casos asintíticamente según una normal `\(N(0,1)\)`), un valor significativo y positivo (negativo) de los mismos indica la existencia de un *cluster* alrededor de la región `\(i\)` de valores similares elevados (bajos) de la variable `\(x\)`
+
+---
+# &lt;span style="font-size:80%"&gt;Contrastes locales de autocorrelación espacial - LISA&lt;/span&gt;
+&lt;spam style="font-size:115%"&gt;
+
+&lt;span style="color:blue"&gt;Algunas consideraciones de los contrastes locales&lt;/span&gt;
+&lt;p style="margin-top: -1em"&gt;
+- La `\(I_i\)` de Moran y los `\(G_{i}\)` y `\(G_{i}^{*}\)` son estadísticos que suministran información complementaria derivada del diferente significado de sus signos
+
+- Si bien el estadístico `\(G_{i}(d)\)` informa acerca de si los &lt;span style="color:blue"&gt;*clusters* de valores similares&lt;/span&gt; detectados por el estadístico `\(I_{i}\)` concentran valores elevados o bajos de la variable analizada, &lt;span style="color:blue"&gt;no son útiles para conocer las agrupaciones detectadas de valores disímiles&lt;/span&gt; (signo negativo de la `\(I_{i}\)` estandarizada)
+
+- A partir de la `\(I_{i}\)` es posible conocer la contribución exacta que presenta cada región al valor del estadístico global de dependencia `\(I\)` de Moran, pudiéndose de esta forma detectar observaciones `\(outliers\)`, es decir, observaciones con una contribución excepcional al mismo
+
+- A diferencia de la `\(G(d)\)`, la `\(I\)` de Moran puede ser expresada como la suma de las diferentes `\(I_{i}\)` multiplicadas por un factor de proporcionalidad `\(\gamma\)`:
+
+`$$I=\sum\limits_{i}I_{i}\gamma=\sum\limits_{i}I_{i}\left[S_{0}\left(\sum\limits_{i}(x_{i}-\bar{x})^{2}/N\right)\right]^{-1}$$`
+
+---
+name: r
+# &lt;span style="font-size:80%"&gt;Ejercicio aplicado en R&lt;/span&gt;
+&lt;font size = "5"&gt;
+
+En este ejercicio se utilizan datos del censo de los Estados Unidos para el año 2000, en particular, la información de Manhattan en la ciudad de New York. Se tiene 297 census tracks (o manzanas) y se va a analizar la variable de porcentaje de personas desempleadas (*T0P_UEMP*). 
+
+En los siguientes links se encuentran los datos, el shapefile y el código utilizado en R:
+
+- [Shapefile](https://gusgarciacruz.github.io/EconometriaEspacial/ESDA/NewYork.zip)
+- [Código en R](https://gusgarciacruz.github.io/EconometriaEspacial/ESDA/L5_2.R)
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+  "highlightStyle": "github",
+  "highlightLines": true,
+  "countIncrementalSlides": false,
+  "ratio": "16:9"
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+// add `data-at-shortcutkeys` attribute to <body> to resolve conflicts with JAWS
+// screen reader (see PR #262)
+(function(d) {
+  let res = {};
+  d.querySelectorAll('.remark-help-content table tr').forEach(tr => {
+    const t = tr.querySelector('td:nth-child(2)').innerText;
+    tr.querySelectorAll('td:first-child .key').forEach(key => {
+      const k = key.innerText;
+      if (/^[a-z]$/.test(k)) res[k] = t;  // must be a single letter (key)
+    });
+  });
+  d.body.setAttribute('data-at-shortcutkeys', JSON.stringify(res));
+})(document);
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
