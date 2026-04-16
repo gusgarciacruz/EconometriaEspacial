@@ -31,4 +31,6 @@ Profesor: [Gustavo A. García](https://gusgarciacruz.github.io/cv)
 
 [Critical review](https://gusgarciacruz.github.io/EconometriaEspacial/CR.pdf)
 
+[Research work](https://gusgarciacruz.github.io/EconometriaEspacial/Researchwork.pdf)
+
 [Mapas](https://gusgarciacruz.github.io/EconometriaEspacial/Mapas)
